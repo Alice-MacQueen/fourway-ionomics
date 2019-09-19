@@ -1,0 +1,21 @@
+"0","iondf <- read_csv(""../3-GenstatOutput/QTLlistForAllTraits_flankmarker.csv"", col_names = TRUE)
+"
+"2","Parsed with column specification:
+cols(
+  INDEX = [32mcol_double()[39m,
+  TRAIT = [31mcol_character()[39m,
+  MARKER = [31mcol_character()[39m,
+  POS = [32mcol_double()[39m,
+  LOD = [32mcol_double()[39m,
+  CHR = [31mcol_character()[39m,
+  QTL = [31mcol_character()[39m,
+  lowposition = [32mcol_double()[39m,
+  down_marker = [31mcol_character()[39m,
+  highposition = [32mcol_double()[39m,
+  up_marker = [31mcol_character()[39m,
+  QxE = [31mcol_character()[39m,
+  ChrNo = [32mcol_double()[39m,
+  ChrAnnot = [31mcol_character()[39m,
+  Dist = [32mcol_double()[39m
+)
+"
