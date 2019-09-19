@@ -1,0 +1,369 @@
+"GO","NAME","FUNCTION","TRAIT","count","p.value"
+"GO:0005515","protein binding","molecular_function","Al27",209,0.0129687384906335
+"GO:0005515","protein binding","molecular_function","Rb85",285,0.000709237312388617
+"GO:0055114","oxidation-reduction process","biological_process","Al27",172,0.00215908297810583
+"GO:0055114","oxidation-reduction process","biological_process","K39",178,0.0204180881414079
+"GO:0055114","oxidation-reduction process","biological_process","Rb85",107,0.0139253049014251
+"GO:0003676","nucleic acid binding","molecular_function","Al27",77,0.0107273595342568
+"GO:0020037","heme binding","molecular_function","Al27",77,0.00127424767234789
+"GO:0020037","heme binding","molecular_function","Cd111",29,0.00547397734166332
+"GO:0020037","heme binding","molecular_function","Fe54",4,0.00351830454423227
+"GO:0020037","heme binding","molecular_function","K39",84,0.00100143148597643
+"GO:0006508","proteolysis","biological_process","Al27",74,0.00668102779256914
+"GO:0006979","response to oxidative stress","biological_process","Al27",47,5.05518548177915e-09
+"GO:0006979","response to oxidative stress","biological_process","Cd111",15,0.000914870018680948
+"GO:0004601","peroxidase activity","molecular_function","Al27",45,8.94071293211712e-09
+"GO:0004601","peroxidase activity","molecular_function","Cd111",15,0.000555370709112225
+"GO:0004601","peroxidase activity","molecular_function","Mg26",13,0.0361951010807508
+"GO:0003700","DNA-binding transcription factor activity","molecular_function","Al27",39,0.00613066108092868
+"GO:0003700","DNA-binding transcription factor activity","molecular_function","Cu63",69,0.000894348938688781
+"GO:0003700","DNA-binding transcription factor activity","molecular_function","P31",188,0.000189155741541651
+"GO:0003700","DNA-binding transcription factor activity","molecular_function","Rb85",32,0.000292899927534689
+"GO:0003700","DNA-binding transcription factor activity","molecular_function","Sr88",48,0.0104830919449408
+"GO:0003700","DNA-binding transcription factor activity","molecular_function","Zn66",53,0.0141031423982123
+"GO:0016747","transferase activity, transferring acyl groups other than amino-acyl groups","molecular_function","Al27",33,0.00475300253129978
+"GO:0016747","transferase activity, transferring acyl groups other than amino-acyl groups","molecular_function","Fe54",15,0.000238969122587058
+"GO:0004190","aspartic-type endopeptidase activity","molecular_function","Al27",22,0.0138025129741876
+"GO:0004190","aspartic-type endopeptidase activity","molecular_function","Sr88",5,0.00439588323300347
+"GO:0016757","transferase activity, transferring glycosyl groups","molecular_function","Al27",22,0.00327677750878441
+"GO:0016757","transferase activity, transferring glycosyl groups","molecular_function","Mn55",17,0.00831167346161851
+"GO:0016757","transferase activity, transferring glycosyl groups","molecular_function","P31",13,0.00106850965486412
+"GO:0043531","ADP binding","molecular_function","Al27",21,0.000106911015733936
+"GO:0043531","ADP binding","molecular_function","Cd111",5,0.0123410135639955
+"GO:0043531","ADP binding","molecular_function","Cu63",11,4.91044210473566e-06
+"GO:0043531","ADP binding","molecular_function","Mg26",30,0.000104924013569382
+"GO:0043531","ADP binding","molecular_function","P31",81,0.00334045415068846
+"GO:0043531","ADP binding","molecular_function","Rb85",67,0.000298327992179675
+"GO:0043531","ADP binding","molecular_function","Sr88",71,0.00404454188355952
+"GO:0043531","ADP binding","molecular_function","Zn66",13,0.00176348648001966
+"GO:0050660","flavin adenine dinucleotide binding","molecular_function","Al27",18,0.0100344645151657
+"GO:0004650","polygalacturonase activity","molecular_function","Al27",8,0.00307971748010092
+"GO:0000079","regulation of cyclin-dependent protein serine/threonine kinase activity","biological_process","Al27",6,0.00130645788324373
+"GO:0008061","chitin binding","molecular_function","Al27",6,0.00550740911479653
+"GO:0008061","chitin binding","molecular_function","Sr88",6,0.0109464217297653
+"GO:0008107","galactoside 2-alpha-L-fucosyltransferase activity","molecular_function","Al27",6,0.00651339951292264
+"GO:0008107","galactoside 2-alpha-L-fucosyltransferase activity","molecular_function","Cu63",11,3.79603331981213e-08
+"GO:0015937","coenzyme A biosynthetic process","biological_process","Al27",6,5.98955427866605e-05
+"GO:0019901","protein kinase binding","molecular_function","Al27",6,0.00130645788324373
+"GO:0042546","cell wall biogenesis","biological_process","Al27",6,0.00651339951292264
+"GO:0042546","cell wall biogenesis","biological_process","Cu63",11,3.79603331981213e-08
+"GO:0004140","dephospho-CoA kinase activity","molecular_function","Al27",5,5.52790611488036e-05
+"GO:0015914","phospholipid transport","biological_process","Al27",5,0.00406864111833902
+"GO:0004602","glutathione peroxidase activity","molecular_function","Al27",4,0.00794646752683497
+"GO:0032549","ribonucleoside binding","molecular_function","Al27",4,0.012679325259155
+"GO:0004424","imidazoleglycerol-phosphate dehydratase activity","molecular_function","Al27",3,0.000658915580019055
+"GO:0016125","sterol metabolic process","biological_process","Al27",3,0.00157886634147195
+"GO:0016125","sterol metabolic process","biological_process","Sr88",3,0.00240445016703743
+"GO:0047750","cholestenol delta-isomerase activity","molecular_function","Al27",3,0.00157886634147195
+"GO:0047750","cholestenol delta-isomerase activity","molecular_function","Sr88",3,0.00240445016703743
+"GO:0016174","NAD(P)H oxidase activity","molecular_function","Al27",2,0.00893560573100556
+"GO:0019211","phosphatase activator activity","molecular_function","Al27",2,0.00893560573100556
+"GO:0008152","metabolic process","biological_process","Ca44",82,0.000841770744405764
+"GO:0008152","metabolic process","biological_process","Zn66",69,0.000660853527459654
+"GO:0016021","integral component of membrane","cellular_component","Ca44",45,0.000911747655236053
+"GO:0016758","transferase activity, transferring hexosyl groups","molecular_function","Ca44",41,3.83426859508047e-05
+"GO:0016758","transferase activity, transferring hexosyl groups","molecular_function","P31",82,0.0212745599526173
+"GO:0016758","transferase activity, transferring hexosyl groups","molecular_function","Zn66",40,4.41271289839261e-07
+"GO:0008234","cysteine-type peptidase activity","molecular_function","Ca44",24,0.0068345508294245
+"GO:0048544","recognition of pollen","biological_process","Ca44",16,0.0125214510323597
+"GO:0048544","recognition of pollen","biological_process","Fe54",9,0.00183396593094228
+"GO:0048544","recognition of pollen","biological_process","Mo98",12,0.00264474402766364
+"GO:0048544","recognition of pollen","biological_process","P31",41,0.00285750999596999
+"GO:0008080","N-acetyltransferase activity","molecular_function","Ca44",10,0.00104188487813166
+"GO:0008080","N-acetyltransferase activity","molecular_function","Mg26",10,0.0312563679641656
+"GO:0004869","cysteine-type endopeptidase inhibitor activity","molecular_function","Ca44",7,0.00151447322271456
+"GO:0005615","extracellular space","cellular_component","Ca44",7,0.00271831241329852
+"GO:0005615","extracellular space","cellular_component","K39",8,0.0041001004731805
+"GO:0004519","endonuclease activity","molecular_function","Ca44",6,0.00152493957112143
+"GO:0004519","endonuclease activity","molecular_function","Mn55",6,0.0011797392578042
+"GO:0004519","endonuclease activity","molecular_function","Sr88",7,0.00199804674672701
+"GO:0016887","ATPase activity","molecular_function","Ca44",6,0.0114003560009686
+"GO:0016887","ATPase activity","molecular_function","Mo98",18,0.00224897880700316
+"GO:0048038","quinone binding","molecular_function","Ca44",5,0.0113027987919816
+"GO:0008271","secondary active sulfate transmembrane transporter activity","molecular_function","Ca44",4,0.00891037128666463
+"GO:0008272","sulfate transport","biological_process","Ca44",4,0.00891037128666463
+"GO:0015116","sulfate transmembrane transporter activity","molecular_function","Ca44",4,0.00891037128666463
+"GO:0032259","methylation","biological_process","Ca44",4,0.00274833847769031
+"GO:0003916","DNA topoisomerase activity","molecular_function","Ca44",3,0.00606611261608673
+"GO:0003916","DNA topoisomerase activity","molecular_function","K39",3,0.0145249003816178
+"GO:0003917","DNA topoisomerase type I activity","molecular_function","Ca44",3,0.0111452798999877
+"GO:0003917","DNA topoisomerase type I activity","molecular_function","K39",3,0.0260298135171011
+"GO:0006259","DNA metabolic process","biological_process","Ca44",3,0.0111452798999877
+"GO:0006259","DNA metabolic process","biological_process","Mn55",3,0.00972102208482477
+"GO:0009538","photosystem I reaction center","cellular_component","Ca44",3,0.00838074275423231
+"GO:0009538","photosystem I reaction center","cellular_component","Mn55",3,0.00729787456280041
+"GO:0015935","small ribosomal subunit","cellular_component","Ca44",3,0.00606611261608673
+"GO:0003856","3-dehydroquinate synthase activity","molecular_function","Ca44",2,0.00578131419336246
+"GO:0003856","3-dehydroquinate synthase activity","molecular_function","K39",2,0.0107633992416194
+"GO:0004842","ubiquitin-protein transferase activity","molecular_function","Ca44",2,0.00346351131292414
+"GO:0004842","ubiquitin-protein transferase activity","molecular_function","K39",25,0.00538075332600851
+"GO:0004842","ubiquitin-protein transferase activity","molecular_function","Mn55",1,0.000854452121943117
+"GO:0030247","polysaccharide binding","molecular_function","Ca44",2,0.0136317690502972
+"GO:0030247","polysaccharide binding","molecular_function","P31",14,0.0048384338511846
+"GO:0043419","urea catabolic process","biological_process","Ca44",2,0.00578131419336246
+"GO:0043419","urea catabolic process","biological_process","K39",2,0.0107633992416194
+"GO:0045039","protein insertion into mitochondrial inner membrane","biological_process","Ca44",2,0.00578131419336246
+"GO:0005509","calcium ion binding","molecular_function","Ca44",1,0.000277836879717821
+"GO:0005509","calcium ion binding","molecular_function","K39",24,0.0220168157016804
+"GO:0016567","protein ubiquitination","biological_process","Ca44",1,0.00122720578187724
+"GO:0016567","protein ubiquitination","biological_process","K39",22,0.0139723717742746
+"GO:0016567","protein ubiquitination","biological_process","Mn55",1,0.00178097173462313
+"GO:0046872","metal ion binding","molecular_function","Cd111",18,0.00572131104971392
+"GO:0007165","signal transduction","biological_process","Cd111",9,0.00180203689839067
+"GO:0022857","transmembrane transporter activity","molecular_function","Cd111",9,0.00882629781484723
+"GO:0000272","polysaccharide catabolic process","biological_process","Cd111",3,0.00421617578679109
+"GO:0003746","translation elongation factor activity","molecular_function","Cd111",3,0.0103326193850565
+"GO:0010215","cellulose microfibril organization","biological_process","Cd111",3,0.00359690085138635
+"GO:0016049","cell growth","biological_process","Cd111",3,0.00644490681267417
+"GO:0016049","cell growth","biological_process","P31",7,0.0242851297348261
+"GO:0016161","beta-amylase activity","molecular_function","Cd111",3,0.00421617578679109
+"GO:0031225","anchored component of membrane","cellular_component","Cd111",3,0.00359690085138635
+"GO:0004134","4-alpha-glucanotransferase activity","molecular_function","Cd111",2,0.00179920756780502
+"GO:0004452","isopentenyl-diphosphate delta-isomerase activity","molecular_function","Cd111",2,0.00439420613278916
+"GO:0004452","isopentenyl-diphosphate delta-isomerase activity","molecular_function","Mg26",3,0.00607076645731917
+"GO:0005337","nucleoside transmembrane transporter activity","molecular_function","Cd111",2,0.00608063928399661
+"GO:0005337","nucleoside transmembrane transporter activity","molecular_function","Mg26",3,0.0100652464199708
+"GO:0005853","eukaryotic translation elongation factor 1 complex","cellular_component","Cd111",2,0.00439420613278916
+"GO:0006355","regulation of transcription, DNA-templated","biological_process","Cu63",132,0.000104136054780195
+"GO:0006355","regulation of transcription, DNA-templated","biological_process","Mn55",132,3.34018677925309e-05
+"GO:0006355","regulation of transcription, DNA-templated","biological_process","P31",366,3.65861854543442e-05
+"GO:0016491","oxidoreductase activity","molecular_function","Cu63",65,0.00730437705682108
+"GO:0016491","oxidoreductase activity","molecular_function","Rb85",40,0.01304689749066
+"GO:0005739","mitochondrion","cellular_component","Cu63",17,7.75379656636274e-06
+"GO:0005739","mitochondrion","cellular_component","Fe54",7,0.00132010906482665
+"GO:0005739","mitochondrion","cellular_component","Mn55",13,0.00101746541043408
+"GO:0003690","double-stranded DNA binding","molecular_function","Cu63",16,9.50235821158056e-07
+"GO:0003690","double-stranded DNA binding","molecular_function","Fe54",7,0.00027523425180325
+"GO:0003690","double-stranded DNA binding","molecular_function","Mg26",12,0.0323439650010134
+"GO:0003690","double-stranded DNA binding","molecular_function","Mn55",12,0.000302220246035427
+"GO:0003690","double-stranded DNA binding","molecular_function","P31",20,0.0185321849664754
+"GO:0008378","galactosyltransferase activity","molecular_function","Cu63",7,0.0149414239875584
+"GO:0016844","strictosidine synthase activity","molecular_function","Cu63",7,0.00269449114575128
+"GO:0016844","strictosidine synthase activity","molecular_function","P31",14,0.00172734980318503
+"GO:0004834","tryptophan synthase activity","molecular_function","Cu63",5,0.000449221894457643
+"GO:0004834","tryptophan synthase activity","molecular_function","Mn55",4,0.00389152940279931
+"GO:0006568","tryptophan metabolic process","biological_process","Cu63",5,0.000819493524402725
+"GO:0006568","tryptophan metabolic process","biological_process","Mn55",4,0.00611570662187109
+"GO:0007010","cytoskeleton organization","biological_process","Cu63",4,0.0162264674288138
+"GO:0007010","cytoskeleton organization","biological_process","P31",7,0.0308633455336741
+"GO:0009072","aromatic amino acid family metabolic process","biological_process","Cu63",4,0.000374993059038097
+"GO:0009072","aromatic amino acid family metabolic process","biological_process","K39",3,0.0145249003816178
+"GO:0009072","aromatic amino acid family metabolic process","biological_process","P31",4,0.02554394670704
+"GO:0004334","fumarylacetoacetase activity","molecular_function","Cu63",3,0.00148260653177602
+"GO:0004334","fumarylacetoacetase activity","molecular_function","K39",3,0.00397333116079264
+"GO:0009107","lipoate biosynthetic process","biological_process","Cu63",3,0.010387658531908
+"GO:0009107","lipoate biosynthetic process","biological_process","Zn66",4,0.000440510988252245
+"GO:0016151","nickel cation binding","molecular_function","Cu63",3,0.0134080334848702
+"GO:0016151","nickel cation binding","molecular_function","P31",5,0.0169611277696596
+"GO:0016992","lipoate synthase activity","molecular_function","Cu63",3,0.010387658531908
+"GO:0016992","lipoate synthase activity","molecular_function","Zn66",4,0.000440510988252245
+"GO:0017150","tRNA dihydrouridine synthase activity","molecular_function","Cu63",3,0.00388775513513348
+"GO:0043161","proteasome-mediated ubiquitin-dependent protein catabolic process","biological_process","Cu63",3,0.010387658531908
+"GO:0004061","arylformamidase activity","molecular_function","Cu63",2,0.0172789372826068
+"GO:0006637","acyl-CoA metabolic process","biological_process","Cu63",2,0.0106738040109164
+"GO:0006637","acyl-CoA metabolic process","biological_process","Mg26",2,0.0274458320959599
+"GO:0006637","acyl-CoA metabolic process","biological_process","Zn66",2,0.00732064311350106
+"GO:0009264","deoxyribonucleotide catabolic process","biological_process","Cu63",2,0.0106738040109164
+"GO:0010411","xyloglucan metabolic process","biological_process","Cu63",2,0.00549526082005008
+"GO:0016413","O-acetyltransferase activity","molecular_function","Cu63",2,0.00549526082005008
+"GO:0019441","tryptophan catabolic process to kynurenine","biological_process","Cu63",2,0.0172789372826068
+"GO:0047617","acyl-CoA hydrolase activity","molecular_function","Cu63",2,0.0106738040109164
+"GO:0047617","acyl-CoA hydrolase activity","molecular_function","Mg26",2,0.0274458320959599
+"GO:0047617","acyl-CoA hydrolase activity","molecular_function","Zn66",2,0.00732064311350106
+"GO:0006633","fatty acid biosynthetic process","biological_process","Fe54",8,0.00279219098474144
+"GO:0005618","cell wall","cellular_component","Fe54",7,0.00494691801199352
+"GO:0008610","lipid biosynthetic process","biological_process","Fe54",7,0.00023831230954733
+"GO:0006073","cellular glucan metabolic process","biological_process","Fe54",5,0.00235670881637188
+"GO:0006310","DNA recombination","biological_process","Fe54",5,0.00348625655836919
+"GO:0006310","DNA recombination","biological_process","Mo98",6,0.00754158087289908
+"GO:0016762","xyloglucan:xyloglucosyl transferase activity","molecular_function","Fe54",5,0.00235670881637188
+"GO:0048046","apoplast","cellular_component","Fe54",5,0.00235670881637188
+"GO:0009916","alternative oxidase activity","molecular_function","Fe54",3,0.000456658403196245
+"GO:0009916","alternative oxidase activity","molecular_function","Mg26",3,0.0383144491122049
+"GO:0009916","alternative oxidase activity","molecular_function","Zn66",3,0.00608414931497038
+"GO:0032502","developmental process","biological_process","Fe54",3,0.00487163126423383
+"GO:0016705","oxidoreductase activity, acting on paired donors, with incorporation or reduction of molecular oxygen","molecular_function","Fe54",1,0.00192753300817133
+"GO:0016705","oxidoreductase activity, acting on paired donors, with incorporation or reduction of molecular oxygen","molecular_function","K39",61,0.00025383266973058
+"GO:0016705","oxidoreductase activity, acting on paired donors, with incorporation or reduction of molecular oxygen","molecular_function","Mo98",30,0.000534705810855948
+"GO:0016705","oxidoreductase activity, acting on paired donors, with incorporation or reduction of molecular oxygen","molecular_function","Na23",15,0.000481643449847954
+"GO:0005506","iron ion binding","molecular_function","K39",63,0.00170644222599211
+"GO:0005506","iron ion binding","molecular_function","Mo98",35,8.82059624983129e-05
+"GO:0005506","iron ion binding","molecular_function","Na23",19,1.6380698235462e-05
+"GO:0006694","steroid biosynthetic process","biological_process","K39",11,0.00140912487954606
+"GO:0004197","cysteine-type endopeptidase activity","molecular_function","K39",8,0.000428470242196829
+"GO:0005525","GTP binding","molecular_function","K39",8,0.00106857803592362
+"GO:0004970","ionotropic glutamate receptor activity","molecular_function","K39",7,0.0114045031576769
+"GO:0016209","antioxidant activity","molecular_function","K39",7,0.000435464153245082
+"GO:0007186","G protein-coupled receptor signaling pathway","biological_process","K39",6,0.00212645558337024
+"GO:0004176","ATP-dependent peptidase activity","molecular_function","K39",5,0.0060946809603076
+"GO:0008146","sulfotransferase activity","molecular_function","K39",4,0.00638649296180302
+"GO:0004579","dolichyl-diphosphooligosaccharide-protein glycotransferase activity","molecular_function","K39",3,0.0145249003816178
+"GO:0005834","heterotrimeric G-protein complex","cellular_component","K39",3,0.0198178513596566
+"GO:0003879","ATP phosphoribosyltransferase activity","molecular_function","K39",2,0.0206543941306862
+"GO:0004329","formate-tetrahydrofolate ligase activity","molecular_function","K39",2,0.0206543941306862
+"GO:0048513","animal organ development","biological_process","K39",2,0.0206543941306862
+"GO:0050080","malonyl-CoA decarboxylase activity","molecular_function","K39",2,0.0107633992416194
+"GO:0050790","regulation of catalytic activity","biological_process","K39",2,0.0206543941306862
+"GO:0004812","aminoacyl-tRNA ligase activity","molecular_function","K39",1,0.0220678810582414
+"GO:0030246","carbohydrate binding","molecular_function","K39",1,0.000260982724521156
+"GO:0004672","protein kinase activity","molecular_function","Mg26",222,0.016555786554243
+"GO:0004672","protein kinase activity","molecular_function","Sr88",204,0.0120892322258435
+"GO:0006468","protein phosphorylation","biological_process","Mg26",221,0.0206728052071979
+"GO:0016020","membrane","cellular_component","Mg26",147,0.020572944472399
+"GO:0016020","membrane","cellular_component","Mo98",60,0.00811078439088769
+"GO:0016020","membrane","cellular_component","Sr88",85,0.00857358746203515
+"GO:0003678","DNA helicase activity","molecular_function","Mg26",15,0.0315818336557437
+"GO:0015031","protein transport","biological_process","Mg26",13,0.00117111065650248
+"GO:0008299","isoprenoid biosynthetic process","biological_process","Mg26",10,0.00321877321869951
+"GO:0042393","histone binding","molecular_function","Mg26",10,0.026460029777983
+"GO:0042393","histone binding","molecular_function","Zn66",7,0.00994575806258009
+"GO:0008408","3'-5' exonuclease activity","molecular_function","Mg26",9,0.0405643948632589
+"GO:0008408","3'-5' exonuclease activity","molecular_function","Mo98",6,0.00416813009146034
+"GO:0008408","3'-5' exonuclease activity","molecular_function","Na23",5,0.000227841138082346
+"GO:0008565","obsolete protein transporter activity","molecular_function","Mg26",8,0.0098776401986689
+"GO:0003887","DNA-directed DNA polymerase activity","molecular_function","Mg26",6,0.017248228879718
+"GO:0005874","microtubule","cellular_component","Mg26",6,0.0394790445349473
+"GO:0005874","microtubule","cellular_component","P31",14,0.000167214028527966
+"GO:0016760","cellulose synthase (UDP-forming) activity","molecular_function","Mg26",6,0.0233368933260023
+"GO:0006367","transcription initiation from RNA polymerase II promoter","biological_process","Mg26",5,0.0337569260143943
+"GO:0006367","transcription initiation from RNA polymerase II promoter","biological_process","Mo98",4,0.003540709099668
+"GO:0016765","transferase activity, transferring alkyl or aryl (other than methyl) groups","molecular_function","Mg26",5,0.0113156502285699
+"GO:0033897","ribonuclease T2 activity","molecular_function","Mg26",5,0.0090040730575091
+"GO:0006465","signal peptide processing","biological_process","Mg26",4,0.0231279930949189
+"GO:0016149","translation release factor activity, codon specific","molecular_function","Mg26",4,0.0347395493551147
+"GO:0016149","translation release factor activity, codon specific","molecular_function","P31",6,0.0289382930235154
+"GO:0010468","regulation of gene expression","biological_process","Mg26",3,0.0383144491122049
+"GO:0016772","transferase activity, transferring phosphorus-containing groups","molecular_function","Mg26",3,0.0293855963306669
+"GO:0046907","intracellular transport","biological_process","Mg26",3,0.0293855963306669
+"GO:0000123","histone acetyltransferase complex","cellular_component","Mg26",2,0.0143996773205518
+"GO:0000244","spliceosomal tri-snRNP complex assembly","biological_process","Mg26",2,0.0143996773205518
+"GO:0006359","regulation of transcription by RNA polymerase III","biological_process","Mg26",2,0.0143996773205518
+"GO:0006729","tetrahydrobiopterin biosynthetic process","biological_process","Mg26",2,0.0274458320959599
+"GO:0008124","4-alpha-hydroxytetrahydrobiopterin dehydratase activity","molecular_function","Mg26",2,0.0274458320959599
+"GO:0042558","pteridine-containing compound metabolic process","biological_process","Mg26",2,0.0274458320959599
+"GO:0048278","vesicle docking","biological_process","Mg26",2,0.0143996773205518
+"GO:0045735","nutrient reservoir activity","molecular_function","Mg26",1,0.0304948559383363
+"GO:0045735","nutrient reservoir activity","molecular_function","P31",2,0.000700323751196671
+"GO:0045735","nutrient reservoir activity","molecular_function","Sr88",45,1.67404387279796e-31
+"GO:0005634","nucleus","cellular_component","Mn55",71,1.1909004100445e-05
+"GO:0005634","nucleus","cellular_component","P31",171,0.00114293095905535
+"GO:0043565","sequence-specific DNA binding","molecular_function","Mn55",39,0.00303715535471436
+"GO:0043565","sequence-specific DNA binding","molecular_function","P31",113,4.53766549794952e-05
+"GO:0043565","sequence-specific DNA binding","molecular_function","Rb85",15,0.001889885064532
+"GO:0043565","sequence-specific DNA binding","molecular_function","Sr88",22,0.0117914707251145
+"GO:0007275","multicellular organism development","biological_process","Mn55",25,1.75297159755258e-10
+"GO:0007275","multicellular organism development","biological_process","Sr88",27,4.33855782856639e-08
+"GO:0006511","ubiquitin-dependent protein catabolic process","biological_process","Mn55",24,1.56389740984925e-07
+"GO:0006511","ubiquitin-dependent protein catabolic process","biological_process","Sr88",27,7.76127433961817e-06
+"GO:0009055","electron transfer activity","molecular_function","Mn55",22,0.00755956741118775
+"GO:0006810","transport","biological_process","Mn55",11,0.00420524738332647
+"GO:0000786","nucleosome","cellular_component","Mn55",9,0.00523041515472434
+"GO:0005215","transporter activity","molecular_function","Mn55",6,0.00861792045863288
+"GO:0009522","photosystem I","cellular_component","Mn55",5,0.0042543147738876
+"GO:0006308","DNA catabolic process","biological_process","Mn55",4,0.00121222717062634
+"GO:0006308","DNA catabolic process","biological_process","Sr88",6,4.62024371822157e-05
+"GO:0006402","mRNA catabolic process","biological_process","Mn55",4,0.00229034724171593
+"GO:0010038","response to metal ion","biological_process","Mn55",3,0.0036297236595152
+"GO:0016756","glutathione gamma-glutamylcysteinyltransferase activity","molecular_function","Mn55",3,0.000713555753903714
+"GO:0030014","CCR4-NOT complex","cellular_component","Mn55",3,0.00729787456280041
+"GO:0046938","phytochelatin biosynthetic process","biological_process","Mn55",3,0.000713555753903714
+"GO:0032784","regulation of DNA-templated transcription, elongation","biological_process","Mn55",2,0.00179714574761792
+"GO:0032784","regulation of DNA-templated transcription, elongation","biological_process","P31",2,0.0190116451518077
+"GO:0005524","ATP binding","molecular_function","Mo98",102,0.00274338594358894
+"GO:0006855","drug transmembrane transport","biological_process","Mo98",8,0.0047337483144962
+"GO:0015297","antiporter activity","molecular_function","Mo98",8,0.0047337483144962
+"GO:0016773","phosphotransferase activity, alcohol group as acceptor","molecular_function","Mo98",7,0.00410944295202738
+"GO:0016773","phosphotransferase activity, alcohol group as acceptor","molecular_function","P31",18,0.0371792636609178
+"GO:0001678","cellular glucose homeostasis","biological_process","Mo98",4,0.000400734728479769
+"GO:0001678","cellular glucose homeostasis","biological_process","P31",6,0.011233470485824
+"GO:0004396","hexokinase activity","molecular_function","Mo98",4,0.000400734728479769
+"GO:0004396","hexokinase activity","molecular_function","P31",6,0.011233470485824
+"GO:0005536","glucose binding","molecular_function","Mo98",4,0.000400734728479769
+"GO:0005536","glucose binding","molecular_function","P31",6,0.011233470485824
+"GO:0046835","carbohydrate phosphorylation","biological_process","Mo98",4,0.000400734728479769
+"GO:0046835","carbohydrate phosphorylation","biological_process","P31",6,0.011233470485824
+"GO:0004089","carbonate dehydratase activity","molecular_function","Mo98",3,0.000758925334356573
+"GO:0004089","carbonate dehydratase activity","molecular_function","Na23",3,3.75176789342411e-05
+"GO:0004471","malate dehydrogenase (decarboxylating) (NAD+) activity","molecular_function","Mo98",3,0.00542181101606322
+"GO:0006897","endocytosis","biological_process","Mo98",2,0.00576189540133075
+"GO:0006139","nucleobase-containing compound metabolic process","biological_process","Na23",6,0.000145595021001477
+"GO:0015078","proton transmembrane transporter activity","molecular_function","Na23",4,0.00145333193671574
+"GO:0000178","exosome (RNase complex)","cellular_component","Na23",2,0.00337217675418999
+"GO:0003883","CTP synthase activity","molecular_function","Na23",2,0.00337217675418999
+"GO:0033179","proton-transporting V-type ATPase, V0 domain","cellular_component","Na23",2,0.00271360971888006
+"GO:0003924","GTPase activity","molecular_function","P31",25,0.000212890136784061
+"GO:0051536","iron-sulfur cluster binding","molecular_function","P31",25,0.00632274807301451
+"GO:0007017","microtubule-based process","biological_process","P31",15,0.000298328951654639
+"GO:0003697","single-stranded DNA binding","molecular_function","P31",9,0.0080280703626306
+"GO:0003993","acid phosphatase activity","molecular_function","P31",9,0.00162237505870765
+"GO:0009765","photosynthesis, light harvesting","biological_process","P31",9,0.0340568760802343
+"GO:0033178","proton-transporting two-sector ATPase complex, catalytic domain","cellular_component","P31",8,0.00924920790888772
+"GO:0000155","phosphorelay sensor kinase activity","molecular_function","P31",7,0.0242851297348261
+"GO:0000155","phosphorelay sensor kinase activity","molecular_function","Rb85",5,0.00554177071821553
+"GO:0008173","RNA methyltransferase activity","molecular_function","P31",7,0.0308633455336741
+"GO:0000049","tRNA binding","molecular_function","P31",6,0.0217745907004185
+"GO:0005086","ARF guanyl-nucleotide exchange factor activity","molecular_function","P31",6,0.0159098024509656
+"GO:0016829","lyase activity","molecular_function","P31",6,0.000642976099384997
+"GO:0016829","lyase activity","molecular_function","Sr88",19,0.0012647384370576
+"GO:0032012","regulation of ARF protein signal transduction","biological_process","P31",6,0.0159098024509656
+"GO:0006605","protein targeting","biological_process","P31",5,0.00193573557802263
+"GO:0004144","diacylglycerol O-acyltransferase activity","molecular_function","P31",4,0.0159071089077643
+"GO:0006952","defense response","biological_process","P31",4,0.028930612243703
+"GO:0006952","defense response","biological_process","Zn66",8,0.00532855357698082
+"GO:0010333","terpene synthase activity","molecular_function","P31",4,0.000533768987572978
+"GO:0010333","terpene synthase activity","molecular_function","Sr88",17,0.00148968118424734
+"GO:0045017","glycerolipid biosynthetic process","biological_process","P31",4,0.00892142224289347
+"GO:0019825","oxygen binding","molecular_function","P31",3,0.00939893907787199
+"GO:0005789","endoplasmic reticulum membrane","cellular_component","P31",2,0.0281535746633331
+"GO:0005789","endoplasmic reticulum membrane","cellular_component","Zn66",6,0.01241583924738
+"GO:0005975","carbohydrate metabolic process","biological_process","Rb85",62,0.00108700896320602
+"GO:0004553","hydrolase activity, hydrolyzing O-glycosyl compounds","molecular_function","Rb85",46,0.00189900785775648
+"GO:0030170","pyridoxal phosphate binding","molecular_function","Rb85",18,0.00387010857017356
+"GO:0016853","isomerase activity","molecular_function","Rb85",9,0.000404150354071017
+"GO:0016853","isomerase activity","molecular_function","Zn66",5,0.0181917139442307
+"GO:0005576","extracellular region","cellular_component","Rb85",7,0.000718779305885112
+"GO:0006631","fatty acid metabolic process","biological_process","Rb85",6,0.00271881788222014
+"GO:0008081","phosphoric diester hydrolase activity","molecular_function","Rb85",6,0.00661343255290917
+"GO:0009405","pathogenesis","biological_process","Rb85",6,1.78560641960152e-06
+"GO:0071949","FAD binding","molecular_function","Rb85",6,0.0135010200880165
+"GO:0006904","vesicle docking involved in exocytosis","biological_process","Rb85",5,0.00554177071821553
+"GO:0045300","acyl-[acyl-carrier-protein] desaturase activity","molecular_function","Rb85",5,0.00279978477131719
+"GO:0004451","isocitrate lyase activity","molecular_function","Rb85",4,0.000496303110517369
+"GO:0032957","inositol trisphosphate metabolic process","biological_process","Rb85",4,0.00294836048628534
+"GO:0047325","inositol tetrakisphosphate 1-kinase activity","molecular_function","Rb85",4,0.00294836048628534
+"GO:0052725","inositol-1,3,4-trisphosphate 6-kinase activity","molecular_function","Rb85",4,0.00294836048628534
+"GO:0052726","inositol-1,3,4-trisphosphate 5-kinase activity","molecular_function","Rb85",4,0.00294836048628534
+"GO:0004371","glycerone kinase activity","molecular_function","Rb85",2,0.0162322117826838
+"GO:0005956","protein kinase CK2 complex","cellular_component","Rb85",2,0.0162322117826838
+"GO:0006071","glycerol metabolic process","biological_process","Rb85",2,0.0162322117826838
+"GO:0009059","macromolecule biosynthetic process","biological_process","Rb85",2,0.0162322117826838
+"GO:0015996","chlorophyll catabolic process","biological_process","Rb85",2,0.00841717525978622
+"GO:0019887","protein kinase regulator activity","molecular_function","Rb85",2,0.0162322117826838
+"GO:0030176","integral component of endoplasmic reticulum membrane","cellular_component","Rb85",2,0.0162322117826838
+"GO:0047746","chlorophyllase activity","molecular_function","Rb85",2,0.00841717525978622
+"GO:0008270","zinc ion binding","molecular_function","Sr88",84,0.0108206440300559
+"GO:0030001","metal ion transport","biological_process","Sr88",24,0.00064111849782293
+"GO:0030001","metal ion transport","biological_process","Zn66",16,0.000792018141648157
+"GO:0005622","intracellular","cellular_component","Sr88",20,0.00399230751015183
+"GO:0005507","copper ion binding","molecular_function","Sr88",17,0.00544586433682375
+"GO:0004045","aminoacyl-tRNA hydrolase activity","molecular_function","Sr88",4,0.0101234288217271
+"GO:0004045","aminoacyl-tRNA hydrolase activity","molecular_function","Zn66",3,0.0123893954409475
+"GO:0004540","ribonuclease activity","molecular_function","Sr88",4,0.00389728500856413
+"GO:0004540","ribonuclease activity","molecular_function","Zn66",3,0.00608414931497038
+"GO:0005730","nucleolus","cellular_component","Sr88",3,0.00763117810765671
+"GO:0045132","meiotic chromosome segregation","biological_process","Sr88",3,0.00101026150618066
+"GO:0004124","cysteine synthase activity","molecular_function","Sr88",2,0.0118627217219038
+"GO:0008677","2-dehydropantoate 2-reductase activity","molecular_function","Sr88",2,0.00413113499127645
+"GO:0018279","protein N-linked glycosylation via asparagine","biological_process","Sr88",2,0.00413113499127645
+"GO:0019499","cyanide metabolic process","biological_process","Sr88",2,0.0118627217219038
+"GO:0050017","L-3-cyanoalanine synthase activity","molecular_function","Sr88",2,0.0118627217219038
+"GO:0055085","transmembrane transport","biological_process","Zn66",51,0.0116020752104653
+"GO:0045926","negative regulation of growth","biological_process","Zn66",7,5.73424279625772e-10
+"GO:0016998","cell wall macromolecule catabolic process","biological_process","Zn66",6,0.00319595263493393
+"GO:0004568","chitinase activity","molecular_function","Zn66",5,0.00981272916712499
+"GO:0006032","chitin catabolic process","biological_process","Zn66",5,0.00981272916712499
+"GO:0018024","histone-lysine N-methyltransferase activity","molecular_function","Zn66",5,0.0165507133067336
+"GO:0034968","histone lysine methylation","biological_process","Zn66",5,0.00873874878103408
+"GO:0046873","metal ion transmembrane transporter activity","molecular_function","Zn66",5,0.0109739239519076
+"GO:0051539","4 iron, 4 sulfur cluster binding","molecular_function","Zn66",4,0.00600591012586891
+"GO:0006379","mRNA cleavage","biological_process","Zn66",2,0.00732064311350106
