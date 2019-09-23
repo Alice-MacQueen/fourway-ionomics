@@ -60,7 +60,19 @@ for (phe in unique(QTLlist$TRAIT)){
       tmp1$highposition[i] = tmp2$POS[n-1]
       tmp1$up_marker[i] = tmp2$MARKER[n-1]
     }
+    
+    tmp4 = tmp2 %>% filter(str_detect(MARKER, tmp1$CHR[i]))
+    if (tmp1$highposition[i]< tmp1$lowposition[i] & tmp1$POS[i] > 30){
+      tmp1$highposition[i] = tmp4$POS[nrow(tmp4)]
+      tmp1$up_marker[i] = tmp4$MARKER[nrow(tmp4)]
+    }
+   
+    if (tmp1$highposition[i]< tmp1$lowposition[i] & tmp1$POS[i] < 30){
+      tmp1$lowposition[i] = tmp4$POS[1]
+      tmp1$down_marker[i] = tmp4$MARKER[1]
+    }
   }
+  
   QTL_flank = rbind(QTL_flank,tmp1)
 }
 
