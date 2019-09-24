@@ -1,0 +1,55 @@
+---
+title: "go_enrichment_exploration"
+author: "Alice MacQueen"
+date: "September 24, 2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+```
+
+## load data
+
+```{r}
+allgo <- read_csv(file = "5-EnrichmentAnalysis/FunctionsOfSignificantGOtermsForEachTrait.csv")
+```
+Ask Li: Are these p-values Bonferroni corrected already, or not?
+```{r}
+allgo %>%
+  select(TRAIT, count, p.value, NAME) %>%
+  group_by(NAME, TRAIT) %>%
+  arrange(NAME, TRAIT)
+ 
+allgo %>%
+  group_by(NAME) %>%
+  summarise(count = n()) %>%
+  arrange(desc(count))
+
+allgo %>%
+  select(TRAIT, count, p.value, NAME) %>%
+  arrange(NAME)
+```
+response to oxidative stress 2 Al27, Cd111
+nickel cation binding 2 Cu63, P31
+metal ion transport (2) Sr88, Zn66
+calcium ion binding 2 Ca44, K39
+iron ion binding (3) K39, Mo98, Na23
+oxidation-reduction process (3) Al27, K39, Rb855
+peroxidase activity (3) Al27, Cd111, Mg26
+protein ubiquitination (3) Ca44, K39, Mn55
+heme binding (4) Al27, Cd111, Fe54, K39
+oxidoreductase activity... (4) Cu63, Rb85, Fe54, K39, Mo98, Na23
+DNA-binding transcription factor activity (6) Al27, Cu63, P31, Rb85, Sr88, Zn66
+double-stranded DNA binding (5) Cu63, Fe54, Mg26, Mn55, P31
+metal ion binding: Cd111 
+metal ion transmembrane transporter activity Zn66
+mitochondrion Cu63, Fe54, Mn55
+Mn55: photosystem I
+Ca44, Mn55: photosystem I reaction center
+Mn55: response to metal ion
+Mo98: endocytosis
+
+Fe: cell wall
+Al, Cu: cell wall biogenesis
