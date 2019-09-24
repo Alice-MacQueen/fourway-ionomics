@@ -4,7 +4,7 @@ library(tidyverse)
 library(reshape2)
 library(xlsx)
 library(ape)
-setwd("c://Users/Li Zhang/Desktop/IonomicsData/2-GenstatRunning/")
+setwd("c://Users/Li Zhang/Desktop/fourway-ionomics/2-GenstatRunning/")
 
 ###formatting EFF files
 QTLEffectFiles=intersect(list.files(pattern='EFF'),list.files(pattern='xlsx'))
@@ -92,12 +92,12 @@ QTL_flank = QTL_flank %>% mutate(ChrNo = str_extract(CHR, '[1-9]'), ChrAnnot = s
 QxE = qtlEff %>% filter(INDEX %in% QTL_flank$INDEX[str_detect(QTL_flank$QxE,'Yes')])
 
 ###write results to the output folder
-setwd('c:/Users/Li Zhang/Desktop/IonomicsData/3-GenstatOutput/')
+setwd('c:/Users/Li Zhang/Desktop/fourway-ionomics/3-GenstatOutput/')
 write.csv(QTL_flank,'QTLlistForAllTraits_flankmarker.csv',row.names = F)
 write.csv(QxE,'QTLEffectWithInteraction.csv', row.names = F)
 
 ###plot summary of QTLs
-load('c:/Users/Li Zhang/Desktop/IonomicsData/0-data/sexAveraged.cross.rda')
+load('c:/Users/Li Zhang/Desktop/fourway-ionomics/0-data/sexAveraged.cross.rda')
 QTL_flank$TRAIT = factor(QTL_flank$TRAIT)
 cols  =  rainbow(n=14)
 library(qtlTools)
@@ -140,7 +140,7 @@ for (phe in unique(qtlEff2$TRAIT)){
       geom_hline(yintercept = 0,linetype=2)+ xlab("")+ theme_bw()+
       theme(axis.text = element_text(face = "bold", size = 15))+
       theme(strip.text = element_text(face="bold", size=15))+
-      geom_errorbar(aes(ymin=EFF-SE, ymax=EFF+SE), size=1) + ylab('QTL Effect') +xlab("") +coord_flip()
+      geom_errorbar(aes(ymin=EFF-SE, ymax=EFF+SE), size=0.5, width=0.3) + ylab('QTL Effect') +xlab("")
   )
   dev.off()
 }

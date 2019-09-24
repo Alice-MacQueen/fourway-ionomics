@@ -5,21 +5,21 @@ library(reshape2)
 library(xlsx)
 library(ape)
 
-setwd("c://Users/Li Zhang/Desktop/IonomicsData/5-EnrichmentAnalysis/")
+setwd("c://Users/Li Zhang/Desktop/fourway-ionomics/5-EnrichmentAnalysis/")
 
 ##Read gff3 file and annotation file
-gff3 = read.gff('c:/Users/Li Zhang/Desktop/IonomicsData/0-data/Pvirgatum_516_v5.1.gene.gff3.gz')
+gff3 = read.gff('c:/Users/Li Zhang/Desktop/fourway-ionomics/0-data/Pvirgatum_516_v5.1.gene.gff3.gz')
 genes = gff3 %>% filter(type=='gene') %>% dplyr::rename(ID=attributes) %>%  separate(ID, c('A','B','C'), sep="=|\\;|\\.") %>%
   unite('locusName','B','C',sep = '.') %>%  dplyr::select(seqid, source, type, start, end, locusName) 
 
-annot = read.delim2('c:/Users/Li Zhang/Desktop/IonomicsData/0-data/Pvirgatum_516_v5.1.annotation_info.txt',sep = "\t",header = T)
+annot = read.delim2('c:/Users/Li Zhang/Desktop/fourway-ionomics/0-data/Pvirgatum_516_v5.1.annotation_info.txt',sep = "\t",header = T)
 
 genes_annot = genes %>% left_join(annot) %>% distinct(locusName,.keep_all = T)%>% dplyr::select(seqid, start, end, locusName, GO, "Best.hit.arabi.name","arabi.symbol","arabi.defline","Best.hit.rice.name" , "rice.defline" )%>%
   separate(Best.hit.arabi.name,c('Best.hit.arabi.name','ver'),sep = '\\.') %>% separate(Best.hit.rice.name, c('Best.hit.rice.name','ver2'),sep = '\\.') %>%
   dplyr::select(-ver, -ver2)%>% group_by(locusName) %>% slice(1) %>% ungroup()
 
 ##read candidate gene list for all traits
-CandidateGeneAll = read.csv('c:/Users/Li Zhang/Desktop/IonomicsData/4-CandidateGeneSearch/CandidateGene_ALl.csv')
+CandidateGeneAll = read.csv('c:/Users/Li Zhang/Desktop/fourway-ionomics/4-CandidateGeneSearch/CandidateGene_ALl.csv')
 
 gene_in_genome = genes_annot %>% filter(GO !="")
 
@@ -68,7 +68,7 @@ length(unique(go_significant$GO))
 
 ########get the function for these GO terms
 library(ontologyIndex)
-ontology = get_OBO('c:/Users/Li Zhang/Desktop/IonomicsData/0-data/go-basic.obo', extract_tags = 'everything')
+ontology = get_OBO('c:/Users/Li Zhang/Desktop/fourway-ionomics/0-data/go-basic.obo', extract_tags = 'everything')
 terms = unique(go_significant$GO)
 go_id = data.frame(GO=ontology$id[terms])
 go_name = data.frame(GO=ontology$id[terms], NAME=ontology$name[terms])
@@ -76,10 +76,17 @@ go_namespace = data.frame(FUNCTION=unlist(ontology$namespace[terms]))
 go_namespace = go_namespace %>% rownames_to_column('GO')
 
 go_functions = go_id %>% left_join(go_name) %>% left_join(go_namespace) %>% filter(complete.cases(.))
-
 write.csv(go_functions, 'FunctionsOfSignificantGOterms.csv',row.names = F)
 
-go_functions_trait = go_functions %>% left_join(go_significant)
+go_functions_trait = go_significant %>% left_join(go_functions) %>% dplyr::select(-count, -'p.value')
 write.csv(go_functions_trait,'FunctionsOfSignificantGOtermsForEachTrait.csv',row.names = F)
+
+go_genes = CandidateGeneAll %>% filter(GO !="") %>% 
+  dplyr::select(-chr, -pos_lo, -pos_hi, -seqid, -start,-end) %>%
+  separate(GO, into = c("GO1", "GO2", "GO3", "GO4", "GO5", "GO6", "GO7", "GO8","GO9", "GO10"), sep = ",") %>%
+  gather('GOTerm','GO', GO1:GO10) %>% dplyr::select(-GOTerm)
+
+go_genes =go_functions_trait %>% left_join(go_genes)
+write.csv(go_genes,'Functions&CandidateGenesForSignificantGOterms.csv',row.names = F)
 
 

@@ -8,7 +8,7 @@ library(xlsx)
 library(corrplot)
 
 ###0. set working directory, should have genotyping file and phenotyping file
-dir_main = 'c://Users/Li Zhang/Desktop/IonomicsData/'
+dir_main = 'c://Users/Li Zhang/Desktop/fourway-ionomics/'
 setwd(dir = paste(dir_main,'0-data',sep = '/'))
 getwd()
 
@@ -70,17 +70,23 @@ for (phe in unique(phenotype_positive$traits)){
 phenotype_clean = phenotype_clean %>% spread(traits, values)
 
 pdf(paste0(dir_main,'1-PhenotypicAnalysis&GenstatFormatting/PhenotypicCorrelation.pdf'), onefile = T, width = 10, height=10)
-M = cor(phenotype_clean[,-c(1:2)], use = 'pairwise.complete.obs')
-corrplot::corrplot.mixed(M,lower.col = 'blue')
-mtext('Correlation Across Sites',side=2)
+M = cor(phenotype_clean[,-c(1:2,grep("SampleWeight", colnames(tmp)))], use = 'pairwise.complete.obs')
+order.AOE <- corrMatOrder(M, order = "AOE")
+M.AOE <- M[order.AOE,order.AOE]
+corrplot::corrplot(M.AOE)
+mtext('Correlation Across Sites',side=2, line = 1)
 
 for(s in unique(phenotype_clean$SITE)){
   tmp = phenotype_clean %>% filter(SITE==s)
-  M = cor(tmp[,-c(1:2)], use = 'pairwise.complete.obs')
-  corrplot::corrplot.mixed(M,lower.col = 'blue')
-  mtext(paste0('Correlation at_',s), side=2)
+  M = cor(tmp[,-c(1:2, grep("SampleWeight", colnames(tmp)))], use = 'pairwise.complete.obs')
+  order.AOE <- corrMatOrder(M, order = "AOE")
+  M.AOE <- M[order.AOE,order.AOE]
+  corrplot::corrplot(M.AOE)
+  mtext(paste0('Correlation at_',s), side=2, line = 1)
 }
 dev.off()
+
+
 
 #######number of genotypes for each traits varies after outlier removal, so need to build genstat file for each trait.
 setwd(dir = paste(dir_main, '2-GenstatRunning',sep = '/'))
