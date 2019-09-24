@@ -13,7 +13,7 @@ library(tidyverse)
 ## load data
 
 ```{r}
-allgo <- read_csv(file = "5-EnrichmentAnalysis/FunctionsOfSignificantGOtermsForEachTrait.csv")
+allgo <- read_csv(file = "FunctionsOfSignificantGOtermsForEachTrait.csv")
 ```
 Ask Li: Are these p-values Bonferroni corrected already, or not?
 ```{r}
@@ -30,6 +30,16 @@ allgo %>%
 allgo %>%
   select(TRAIT, count, p.value, NAME) %>%
   arrange(NAME)
+
+allgo %>%
+  filter(TRAIT == "Mn55") %>%
+  arrange(p.value) %>%
+  select(TRAIT, count, p.value, NAME)
+
+allgo %>%
+  arrange(p.value) %>%
+  select(TRAIT, count, p.value, NAME)
+
 ```
 response to oxidative stress 2 Al27, Cd111
 nickel cation binding 2 Cu63, P31
@@ -53,3 +63,25 @@ Mo98: endocytosis
 
 Fe: cell wall
 Al, Cu: cell wall biogenesis
+
+strongest:
+Sr88	45	1.674044e-31	nutrient reservoir activity	
+Mn55	25	1.752972e-10	multicellular organism development	
+Zn66	7	5.734243e-10	negative regulation of growth	
+Al27	47	5.055185e-09	response to oxidative stress	
+Al27	45	8.940713e-09	peroxidase activity	
+Cu63	11	3.796033e-08	galactoside 2-alpha-L-fucosyltransferase activity	
+Cu63	11	3.796033e-08	cell wall biogenesis	
+Sr88	27	4.338558e-08	multicellular organism development	
+Mn55	24	1.563897e-07	ubiquitin-dependent protein catabolic process	
+Zn66	40	4.412713e-07	transferase activity, transferring hexosyl groups
+Cu63	16	9.502358e-07	double-stranded DNA binding	
+Rb85	6	1.785606e-06	pathogenesis	
+Cu63	11	4.910442e-06	ADP binding	
+Cu63	17	7.753797e-06	mitochondrion	
+Sr88	27	7.761274e-06	ubiquitin-dependent protein catabolic process	
+Mn55	71	1.190900e-05	nucleus	
+Na23	19	1.638070e-05	iron ion binding	
+Mn55	132	3.340187e-05	regulation of transcription, DNA-templated	
+P31	366	3.658619e-05	regulation of transcription, DNA-templated	
+Na23	3	3.751768e-05	carbonate dehydratase activity
