@@ -13,10 +13,18 @@ library(tidyverse)
 ## load data
 
 ```{r}
-allgo <- read_csv(file = "FunctionsOfSignificantGOtermsForEachTrait.csv")
+allgo <- read_csv(file = "FunctionsOfSignificantGOterms.csv")
+
+qtldf <- read_csv(file = "Functions&CandidateGenesForSignificantGOterms.csv")
+pval <- read_csv(file = "SignificantGOtermsForTraits.csv")
 ```
-Ask Li: Are these p-values Bonferroni corrected already, or not?
+
 ```{r}
+allgo <- pval %>%
+  left_join(qtldf)
+
+allgo
+
 allgo %>%
   select(TRAIT, count, p.value, NAME) %>%
   group_by(NAME, TRAIT) %>%
@@ -32,10 +40,18 @@ allgo %>%
   arrange(NAME)
 
 allgo %>%
-  filter(TRAIT == "Mn55") %>%
-  arrange(p.value) %>%
-  select(TRAIT, count, p.value, NAME)
+  filter(TRAIT == "Mo98") %>%
+  group_by(QTL) %>%
+  summarise(count = n())
+  arrange(p.value)# %>%
+  #select(TRAIT, count, p.value, NAME)
 
+allgo %>%
+  filter(TRAIT == "Mo98") %>%
+  group_by(QTL, locusName, arabi.defline) %>%
+  summarise(count = n())
+  
+  
 allgo %>%
   arrange(p.value) %>%
   select(TRAIT, count, p.value, NAME)
@@ -85,3 +101,6 @@ Na23	19	1.638070e-05	iron ion binding
 Mn55	132	3.340187e-05	regulation of transcription, DNA-templated	
 P31	366	3.658619e-05	regulation of transcription, DNA-templated	
 Na23	3	3.751768e-05	carbonate dehydratase activity
+
+
+Cytochromes P450 (CYPs) belong to the superfamily of proteins containing a heme cofactor and, therefore, are hemoproteins. CYPs use a variety of small and large molecules as substrates in enzymatic reactions. They are, in general, the terminal oxidase enzymes in electron transfer chains, broadly categorized as P450-containing systems.
