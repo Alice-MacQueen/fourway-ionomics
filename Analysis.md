@@ -2,11 +2,17 @@
 
 Ionomic analysis was run on _380_ plants at three locations for 14 elemental compositions. 
 
-Ca44, Se78, Sr88, and Cd111 had bimodal distributions of abundance within the plant samples. Many had to have outlier samples removed `(did these fall into any sort of pattern of site or individual?)`
+Forage analysis has also been conducted by collaborators at 10 locations, producing estimates of cellulose content, lignin content, nitrogen content, and other variables that still need to be defined. We were interested in determining if we could use forage analysis values to predict ionomic quantities at these 10 sites, after training a model on both ionomic and forage analysis data at the three sites with ionomic data. Given the relative cost of each method (ionomic data costs $5-$6 per sample, and forage analysis is much cheaper), using forage data as a proxy for ionomic data could enable (larger) follow-up studies.
+
+Ca44, Se78, Sr88, and Cd111 had bimodal distributions of abundance within plant samples across all three sites. Many had to have outlier samples removed `(did these fall into any sort of pattern of site or individual?)`
+
+For each ion, heritability and V_a (additive genetic variance) varied extensively between the three sites. Na23, Mg26, Al27, P31, K39, Ca44, Mn55, Cu63, Rb85, Sr88, and Cd111 had heritabilities of 0.2 or greater for at least one site, while B11, Fe54, Co59, Zn66, As75, Se78, and Mo98 did not. PKLE had heritabilities higher than 0.2 for 7 elements (none unique to PKLE); CLMB for 9 elements (Al27 uniquely high at CLMB), and KBSM for 10 elements (Cd111 and K39 uniquely high heritability here). Mg26, P31, Ca44, Mn55, and Rb85 had heritabilities that were not significantly different between all sites; Mg26, Mn55, and Rb85 in particular were the most similar.
+
+In terms of additive genetic variance (V_a) and error variance (V_e), PKLE had the most variance for Na23, Mg26, Al27, K39, Ca44, Zn66, As75, Rb85, Sr88, and Mo98, 10 elements, and 7 with significant V_a, but only 3 with H^2 > 0.2 at PKLE - thus, the variance in the ion quantities at this site were likely due to soil characteristics in most cases, and not under explicit genetic control. CLMB had the most variance for P31, Fe54, Mn55, Co59, Cu63, and Se78, 6 elements, and 3 with significant V_a, and 3 with H^2 > 0.2. KBSM had the most variance for B11 and Cd111, 2 elements, and 1 with significant V_a, Cd111, which also had the highest heritability (0.5) at this site - thus, the variance in Cd111 quantities at this site were affected by soil characteristics but were also under genetic control. 
 
 ## Elemental abundance correlations (phenotypic)
 
-Of 18, four elements did not run due to machine errors in detecting elemental concentrations. 2 didn't run due to negative abundances, gave too few values to converge. 2 of the 16 remaining traits had no QTL - As75 & B11 did not have QTL. Co59 & Se78 didn't work due to negative values. 
+Of 18 total ions, four elements were not analyzed further due to machine errors in detecting elemental concentrations. 2 didn't run due to negative abundances, gave too few values to converge. 2 of the 16 remaining traits had no QTL - As75 & B11 did not have QTL. Co59 & Se78 didn't work due to negative values. 
 
 At CLMB, the majority of elements were not strongly correlated with one another. Ca44 and Sr88 were highly correlated (0.77), as were Co59 and Cu63 (0.57), Fe54 and Al27 (0.51), Mn55 and Sr88 (0.5), Ca and Zn (0.43), Co59 and Fe54 (0.43), and Cu63 and Fe54 (0.44), Al27 and Cu63 (0.44). I believe these are all 2+ elements.
 
@@ -25,7 +31,9 @@ QTL regions on most chromosomes showed QxE. 16 of 18 chromosomes had QTL, and 14
 
 ## LOD scores
 
-QTL analysis of these elemental compositions found between two and 14 QTL regions above a LOD threshold of `3.5`. 
+QTL analysis of the 14 remaining elemental compositions found between two and 14 QTL regions per element that had a LOD threshold above `3.5`. P31 had 14 QTL regions, while Cd111, Fe54, Mo98, and Na23 had 2.
+
+B11, Fe54, Co59, Zn66, As75, Se78, and Mo98 had low heritabilities (<0.2) at all three sites. As75 & B11 did not have QTL. Co59 & Se78 were dropped from the analysis due to negative values for concentrations. Fe54, Zn66, and Mo98 had 2, 3, and 2 QTL, respectively.
 
 The largest LOD score was for Cd111 on Chr02K@32.06 `(Mb? what?)`. In the C x D cross, this region had large effects on Cd111 levels at KBSM and CLMB. This QTL overlapped a QTL for Sr88, but this QTL fell into a much wider interval, and barring a mechanism affecting these elements the same way, I doubt these have pleiotropy.
 
@@ -73,7 +81,7 @@ Chr09N had three sets of overlapping QTL
 What are major functions for each of these elements in plant cells?
 Al Aluminum toxicity is a major constraint for crop production in acidic soil worldwide (Panda, Baluska, Matsumoto 2009). The target of Al toxicity is the root tip, in which Al exposure causes inhibition of cell elongation and cell division, leading to root stunting accompanied by reduced water and nutrient uptake. Al3+ is the most toxic form. Approximately 50% of arable land is negatively impacted by Al toxicity due to acidic soil.
 
-Ca Calcium uptake by the plant is passive and does not require energy input. Calcium uptake is directly related to the plant transpiration rate. COnditions of high humidity, cold, and low transpiration rates may result in calcium deficiency. Calcium promotes proper plant cell elongation, strengthens cell wall structure by forming calcium pectate compounds, helps protect plants against heat stress by improving stomata function and participating in induction of HSPs. Usually soils with higher pH levels contain more available calcium. Calcium competes with other positively charged ions, such as Na+, K+, and Mg2+. 
+Ca Calcium uptake by the plant is passive and does not require energy input. Calcium uptake is directly related to the plant transpiration rate. Conditions of high humidity, cold, and low transpiration rates may result in calcium deficiency. Calcium promotes proper plant cell elongation, strengthens cell wall structure by forming calcium pectate compounds, helps protect plants against heat stress by improving stomata function and participating in induction of HSPs. Usually soils with higher pH levels contain more available calcium. Calcium competes with other positively charged ions, such as Na+, K+, and Mg2+. 
 
 Cd Cadmium is a environmental pollutant with toxic effects on plants. It can displace essential metals from a wealth of metalloproteins and disturb normal physiological processes and cause severe developmental aberrance. ROS overproduction, chloroplast structure change, cytoskeleton effects, vesicular trafficking effects, cell wall formation effects. Plants have cadmium pumps and transport cadmium into leaf vacuoles. (Wan and Zhang 2012)
 

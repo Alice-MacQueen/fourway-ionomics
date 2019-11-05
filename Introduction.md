@@ -26,7 +26,7 @@
 ### (How we circumvent these difficulties: *Panicum virgatum* four-way cross)
 
 	* have ten field sites that cover 17 degrees of latitude in the central United States
-	* use outbreeding perennial species, which can be cloned so identical genotypes can be planted at the ten sites.
+	* use outbreeding perennial species, which can be cloned. Thus, identical genotypes were planted at the ten sites.
 	* have a cross involving four parents: three switchgrass cultivars and one wild accession. These parents are from two highly divergent southern lowland and northern upland ecotypes. (add info on ecotypes).
 	* planted 425 clones from a four-way outbred mapping population at all ten field sites. Also planted clones of all four grandparents and F1 hybrid plants of the mapping population.
 
