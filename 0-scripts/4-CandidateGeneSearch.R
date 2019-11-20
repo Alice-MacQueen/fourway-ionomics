@@ -4,6 +4,7 @@ library(tidyverse)
 library(reshape2)
 library(xlsx)
 library(ape)
+option(warn=-1)
 setwd("c://Users/Li Zhang/Desktop/fourway-ionomics/4-CandidateGeneSearch/")
 ### Read QTL info
 QTL_all = read.csv('c:/Users/Li Zhang/Desktop/fourway-ionomics/3-GenstatOutput/QTLlistForAllTraits_flankmarker.csv')
@@ -16,13 +17,21 @@ QTL = QTL_all %>% dplyr::mutate_at(vars(down_marker, up_marker, TRAIT), list(as.
 
 gff3 = read.gff('c:/Users/Li Zhang/Desktop/fourway-ionomics/0-data/Pvirgatum_516_v5.1.gene.gff3.gz')
 genes = gff3 %>% filter(type=='gene') %>% dplyr::rename(ID=attributes) %>%  separate(ID, c('A','B','C'), sep="=|\\;|\\.") %>%
-  unite('locusName','B','C',sep = '.') %>%  dplyr::select(seqid, source, type, start, end, locusName) 
+  unite('locusName','B','C',sep = '.') %>%  dplyr::select(seqid, start, end, locusName) 
 
 annot = read.delim2('c:/Users/Li Zhang/Desktop/fourway-ionomics/0-data/Pvirgatum_516_v5.1.annotation_info.txt',sep = "\t",header = T)
-
-genes_annot = genes %>% left_join(annot) %>% distinct(locusName,.keep_all = T)%>% dplyr::select(seqid, start, end, locusName, GO, "Best.hit.arabi.name","arabi.symbol","arabi.defline","Best.hit.rice.name" , "rice.defline" )%>%
+##wroking on the annotation file 
+annot2 = annot %>% dplyr::select(locusName, GO, "Best.hit.arabi.name","arabi.symbol","arabi.defline","Best.hit.rice.name" , "rice.defline" )%>%
   separate(Best.hit.arabi.name,c('Best.hit.arabi.name','ver'),sep = '\\.') %>% separate(Best.hit.rice.name, c('Best.hit.rice.name','ver2'),sep = '\\.') %>%
-  dplyr::select(-ver, -ver2)%>% group_by(locusName) %>% slice(1) %>% ungroup()
+  dplyr::select(-ver, -ver2) %>% distinct(locusName,.keep_all = T)
+
+###write the annotation file for enrichment analysis
+geneID2GO = annot2 %>% dplyr::select(locusName, GO) %>% dplyr::filter(GO != "") 
+write.table(geneID2GO, file ='annotation_for_enrichment.txt',sep=" ", quote = F, row.names = F, col.names = F )
+####
+
+genes_annot = genes %>% left_join(annot2) 
+
 
 #######get the candidate genes for each QTL intervel for the traits
 Counts = NULL

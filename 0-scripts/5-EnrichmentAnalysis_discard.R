@@ -16,7 +16,7 @@ annot = read.delim2('c:/Users/Li Zhang/Desktop/fourway-ionomics/0-data/Pvirgatum
 
 genes_annot = genes %>% left_join(annot) %>% distinct(locusName,.keep_all = T)%>% dplyr::select(seqid, start, end, locusName, GO, "Best.hit.arabi.name","arabi.symbol","arabi.defline","Best.hit.rice.name" , "rice.defline" )%>%
   separate(Best.hit.arabi.name,c('Best.hit.arabi.name','ver'),sep = '\\.') %>% separate(Best.hit.rice.name, c('Best.hit.rice.name','ver2'),sep = '\\.') %>%
-  dplyr::select(-ver, -ver2)%>% group_by(locusName) %>% slice(1) %>% ungroup()
+  dplyr::select(-ver, -ver2)%>% group_by(locusName) %>% dplyr::slice(1) %>% ungroup()
 
 ##read candidate gene list for all traits
 CandidateGeneAll = read.csv('c:/Users/Li Zhang/Desktop/fourway-ionomics/4-CandidateGeneSearch/CandidateGene_ALl.csv')
