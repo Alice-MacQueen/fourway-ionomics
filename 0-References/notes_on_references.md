@@ -54,3 +54,37 @@ Ca & Mg: 0.357****
 Sr & Mg: 0.322***
 
 Rb & K: 0.604****
+
+
+
+
+
+# Phuke et al., 2017 Genetic Variability, GxE, Correlation, and GGE Biplot Analysis for Grain Iron and Zinc Concentration and Other Agronomic Traits in RIL population of Sorghum
+
+
+
+The low grain iron and zinc densities are well documented problems in food crops,
+affecting crop nutritional quality especially in cereals.
+
+
+
+Three micronutrients iron (Fe), zinc (Zn) and provitamin A are widely
+deficient, especially among low economic group population in
+developing countries. Fe and Zn deficiencies are most prevalent
+with almost over three billion people affected word wide (Welch
+and Graham, 2004). Nearly 500,000 children (<5 years of age)
+die annually because of Zn and Fe deficiencies (Black et al., 2008).
+Among the 26 major risk factors of the global burden of disease
+estimates, iron deficiency ranks 9th, while zinc, and vitamin
+A deficiencies ranks at 11th and 13th positions, respectively
+(Ezzati et al., 2002). Deficiency of iron and zinc results in poor
+growth, reduced immunity, fatigue, irritability, weakness, hair
+loss, wasting of muscles, sterility, morbidity and even death in
+acute cases (Haas and Brownlie, 2001; Pfeiffer and McClafferty,
+2007; Stein, 2010).
+
+Soil micronutrient status vary greatly in dry lands where
+sorghum cultivation is concentrated, under such conditions,
+genotype × environment (G × E) interaction for agronomic
+and grain nutrient traits expect to be large and may not permit
+differentiation of performance of genotypes across environments.
