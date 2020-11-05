@@ -1,0 +1,68 @@
+---
+title: "UpSet_plot_element_overlaps"
+author: "Alice MacQueen"
+date: "11/4/2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(ComplexUpset)
+library(cowplot)
+```
+
+#
+
+```{r}
+qtldf <- read_csv("../3-GenstatOutput/QTLlistForAllTraits_flankmarker.csv")
+qtldf %>%
+  select(TRAIT, LOD, CHR, down_marker, up_marker, QxE) %>%
+  separate(down_marker, into = c(NA, "pos_low"), sep = "_", convert = TRUE) %>%
+  separate(up_marker, into = c(NA, "pos_high"), sep = "_", convert = TRUE) %>%
+  arrange(CHR, pos_low) %>%
+  write_csv("../3-GenstatOutput/QTLlist_for_overlaps.csv")
+```
+
+# did some finagling of this output in Excel to figure out what the heck I am doing. Really, finding out the overlaps for each row and adding them as new columns of the dataframe.
+```{r}
+qtldf <- read_csv("../3-GenstatOutput/QTLlist_for_overlaps_2.csv")
+qtldf %>%
+  group_by(Index) %>% tally() %>% arrange(desc(n))
+qtldf %>%
+  group_by(!is.na(Overlap1), Overlap0, Group) %>%
+  tally() %>%
+  mutate(QTL_Type = case_when(`!is.na(Overlap1)` ~ "overlap",
+                              TRUE ~ "single")) %>%
+  ungroup() %>%
+  select(-`!is.na(Overlap1)`) %>%
+  pivot_wider(names_from = QTL_Type, values_from = n, values_fill = 0) %>%
+  arrange(Group) %>%
+  write_csv("../3-GenstatOutput/QTLlist_single_vs_overlapping_QTL.csv")
+             
+qtl_data_upset <- qtldf %>%
+  select(TRAIT, LOD, Overlap0:Overlap4) %>%
+  pivot_longer(cols = Overlap0:Overlap4, names_to = "overlap", values_to = "Element") %>%
+  select(-overlap) %>%
+  mutate(Present = case_when(!is.na(Element) ~ 1, 
+                             TRUE ~ 0)) %>%
+  filter(!is.na(Element)) %>%
+  pivot_wider(names_from = "Element", values_from = Present, values_fill = 0) %>%
+  select(TRAIT, LOD, Mg, P, K, Ca, Rb, Sr, Mn, Fe, Cu, Zn, Mo, Na, Al, Cd)
+
+qtl_v <- c("Mg", "P", "K", "Ca", "Rb", "Sr", "Mn", "Fe", "Cu", "Zn", "Mo",
+           "Na", "Al", "Cd")
+
+```
+The 18 elements included macronutrients (Mg, P, K, Ca), analogues of macronutrients (Rb, Sr), micronutrients (B, Mn, Fe, Co, Cu, Zn, Se, Mo), and elements that can be harmful to plant growth (Na, Al, As, Cd). 
+
+```{r}
+qtl_u <- upset(data = qtl_data_upset, intersect = qtl_v, 
+      name="Element QTL Colocalization by QTL",
+      themes=upset_modify_themes(
+        list(
+            'overall_sizes'=theme(axis.text.x=element_text(angle=45, hjust =1))
+        ))) 
+save_plot(filename = "../Upset_plot_Element_QTL_colocalization.png", plot = qtl_u, base_height = 6)
+```
+
