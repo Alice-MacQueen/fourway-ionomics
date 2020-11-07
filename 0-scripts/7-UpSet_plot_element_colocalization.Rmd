@@ -66,3 +66,10 @@ qtl_u <- upset(data = qtl_data_upset, intersect = qtl_v,
 save_plot(filename = "../Upset_plot_Element_QTL_colocalization.png", plot = qtl_u, base_height = 6)
 ```
 
+
+Fisher's exact tests element colocalizations
+```{r}
+fisher.test()
+```
+
+
