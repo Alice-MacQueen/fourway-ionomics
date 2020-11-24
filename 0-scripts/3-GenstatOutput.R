@@ -206,29 +206,29 @@ theme_Li = theme(
 myplots_Fig3_1 = vector('list',0)
 for (phe in c('Na','Mn','Rb')){
   tmp1 = subset(qtlEff2, TRAIT==phe)
-  myplots_Fig2_1[[phe]] =
+  myplots_Fig3_1[[phe]] =
     ggplot(tmp1, aes(SITE, EFF)) + geom_col() + facet_grid(CROSS~QTL) + ggtitle(phe)+
     geom_hline(yintercept = 0,linetype=2)+ xlab("")+ theme_bw()+
     theme_Li+
     geom_errorbar(aes(ymin=EFF-SE, ymax=EFF+SE), size=0.5, width=0) + 
     ylab('QTL Effect') +xlab("")
 }
-F3_1=plot_grid(plotlist =  myplots_Fig3_1, nrow=1, rel_widths = c(0.4,0.8,1.2))
+F3_1=plot_grid(plotlist =  myplots_Fig3_1, nrow=1,labels=c('(a)','(b)','(c)'), rel_widths = c(0.4,0.8,1.2))
 
 myplots_Fig3_2 = vector('list',0)
 for (phe in c('P')){
   tmp1 = subset(qtlEff2, TRAIT==phe)
-  myplots_Fig2_2[[phe]] =
+  myplots_Fig3_2[[phe]] =
     ggplot(tmp1, aes(SITE, EFF)) + geom_col() + facet_grid(CROSS~QTL) + ggtitle(phe)+
     geom_hline(yintercept = 0,linetype=2)+ xlab("")+ theme_bw()+
     theme_Li+
     geom_errorbar(aes(ymin=EFF-SE, ymax=EFF+SE), size=0.5, width=0) + 
     ylab('QTL Effect') +xlab("")
 }
-F3_2 = plot_grid(plotlist =  myplots_Fig3_2, nrow=1)
+F3_2 = plot_grid(plotlist =  myplots_Fig3_2,labels = c('(d)'), nrow=1)
 F3 = gridExtra::grid.arrange(F3_1,F3_2, nrow=2)
 
-ggsave(file='../3-GenstatOutput/Fig3_QTLeffectPlot.pdf',p3, height = 6, width = 12)
+ggsave(file='../3-GenstatOutput/Fig3_QTLeffectPlot.pdf',F3, height = 6, width = 12)
 
 ###plot all elements for Supplemental Figure S1, macronutrients, 
 ###analogues, micronutrients, and harmful
