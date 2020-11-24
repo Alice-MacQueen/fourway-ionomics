@@ -228,7 +228,7 @@ for (phe in c('P')){
 F3_2 = plot_grid(plotlist =  myplots_Fig3_2,labels = c('(d)'), nrow=1)
 F3 = gridExtra::grid.arrange(F3_1,F3_2, nrow=2)
 
-ggsave(file='../3-GenstatOutput/Fig3_QTLeffectPlot.pdf',F3, height = 6, width = 12)
+ggsave(file='../3-GenstatOutput/Fig3_QTLeffectPlot.tiff',F3, height = 6, width = 12)
 
 ###plot all elements for Supplemental Figure S1, macronutrients, 
 ###analogues, micronutrients, and harmful
@@ -295,5 +295,5 @@ p5 = plot_grid(plotlist =  myplot5, nrow=1, rel_widths = c(1,1,2))
 
 FS1 = gridExtra::grid.arrange(p1,p2,p3,p4,p5, nrow=5)
 
-ggsave(file='../3-GenstatOutput/Supplemental_Fig_S1_QTLeffectPlot.pdf',FS1, height = 8, width = 14)
+ggsave(file='../3-GenstatOutput/Supplemental_Fig_S1_QTLeffectPlot.tiff',FS1, height = 10, width = 14)
 
