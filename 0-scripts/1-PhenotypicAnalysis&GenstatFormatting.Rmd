@@ -328,3 +328,29 @@ for (phe in unique(phenotype_positive$traits)){
 
 ```
 
+# Li's Figure 1 Code
+```{r}
+p1 =  ggplot(phenotype2, aes(x= SITE, y=Values, fill=SITE))+geom_half_violin()+
+  facet_wrap(~Type+Traits, nrow=6, scales = 'free')+theme_bw()+
+  theme_Li+ xlab("")+ylab("") + theme(legend.position="none")+
+  theme(aspect.ratio = 0.5/1)+
+    theme(plot.margin = grid ::unit(c(0, 0, 0, 0), "cm"))
+
+
+
+
+
+3:41
+p2 = ggplot(h2,aes(SITE,h2))+geom_col(alpha=0.6)+ facet_wrap(~Type+TRAIT, nrow=6,scales = 'free')+
+  theme_bw()+
+  theme_Li+
+  ylab('Heritability')+xlab('')+
+  geom_errorbar(aes(ymin=h2-h2_SE, ymax=h2+h2_SE), width=0)+
+  theme(plot.margin = unit(c(0, 0, 0, 0), "cm"))+
+  theme(aspect.ratio = 0.5/1)
+3:41
+F1 = plot_grid(p1,p2, labels = c('(a)','(b)'),ncol = 2, label_x=c(0.1,0.1))
+save_plot(file='../1-PhenotypicAnalysis&GenstatFormatting/Fig1_PhenotypicVariation&heritability.tiff',
+          F1, base_height = 8) (edited) 
+```
+
