@@ -1,0 +1,108 @@
+---
+title: "2-PlottingFigure1"
+author: "Alice MacQueen"
+date: "11/28/2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(gghalves)
+library(cowplot)
+```
+
+#
+
+```{r}
+phenotype = read.csv('../1-PhenotypicAnalysis&GenstatFormatting/Ionome_cleaned.csv')
+h2 = read.csv('..//2-Heritability&GeneticCorrelation/Heritability.csv')
+```
+
+```{r}
+phenotype2 = phenotype %>% gather('Traits','Values',-SITE,-LINE) %>% 
+  mutate(Type = case_when(
+    str_detect(Traits,'Ca|Mg|P|K') ~ 'macronutrient',
+    str_detect(Traits,'Sr|Rb') ~ 'analogue',
+    str_detect(Traits,'Mn|Zn|Cu|Mo|Fe|B|Co|Se')~'micronutrient',
+    str_detect(Traits,'Al|Na|As|Cd') ~ 'harmful'
+  ))
+
+theme_Li = theme(
+  panel.grid.major = element_blank(),
+  panel.grid.minor = element_blank(),
+  plot.title = element_text(hjust = 0.5),
+  axis.title = element_text(size = 10), axis.text = element_text(size = 8),
+  axis.line.x = element_line(size = 0.35, colour = 'grey50'),
+  axis.line.y = element_line(size = 0.35, colour = 'grey50'),
+  axis.ticks = element_line(size = 0.25, colour = 'grey50'),
+  strip.background = element_blank(),
+  strip.text = element_text(hjust = 0.5, size = 8 ,vjust = 0),
+  strip.placement = 'outside', panel.spacing.x = unit(0, 'cm')
+)
+```
+
+```{r panel one}
+phenotype2$Type = factor(phenotype2$Type, levels = c('macronutrient','analogue','micronutrient','harmful'))
+phenotype2$SITE = factor(phenotype2$SITE, levels = c("TX", "MO", "MI"))
+phenotype2 <- phenotype2 %>%
+  mutate(Named_Trait = paste0(Type, ": ", Traits))
+phenotype2$Named_Trait <- factor(phenotype2$Named_Trait, levels = c("macronutrient: Ca", "macronutrient: K", "macronutrient: Mg", "macronutrient: P", "analogue: Rb", "analogue: Sr","micronutrient: B" , "micronutrient: Co", "micronutrient: Cu", "micronutrient: Fe", "micronutrient: Mn", "micronutrient: Mo", "micronutrient: Se" , "micronutrient: Zn", "harmful: Al" , "harmful: As", "harmful: Cd", "harmful: Na"))
+
+p1 =  ggplot(phenotype2, aes(x= SITE, y=Values, fill=SITE)) +
+  geom_violin(scale = "count") +
+  facet_wrap(~Named_Trait, nrow=6, scales = 'free_y') + 
+  theme_bw() +
+  theme_Li + 
+  xlab("Common Gardens") + 
+  ylab(bquote(F[2]~Element~Contents)) + 
+  theme(legend.position="none",
+        panel.spacing.x = unit(0, 'cm')) +
+  scale_x_discrete(expand = c(-0.01, -0.01))
+p1
+
+```
+?scale_x_discrete
+?geom_violin
+?position_dodge
+?bquote
+
+
+```{r panel two}
+h2 = h2 %>% mutate(Type = case_when(
+  str_detect(TRAIT,'Ca|Mg|P|K') ~ 'macronutrient',
+  str_detect(TRAIT,'Sr|Rb') ~ 'analogue',
+  str_detect(TRAIT,'Mn|Zn|Cu|Mo|Fe|B|Co|Se')~'micronutrient',
+  str_detect(TRAIT,'Al|Na|As|Cd') ~ 'harmful'
+))
+h2$SITE = factor(h2$SITE, levels = c("TX", "MO", "MI"))
+h2$Type = factor(h2$Type, levels = c('macronutrient','analogue','micronutrient','harmful'))
+h2 <- h2 %>%
+  mutate(Named_Trait = paste0(Type, ": ", TRAIT))
+h2$Named_Trait <- factor(h2$Named_Trait, levels = c("macronutrient: Ca", "macronutrient: K", "macronutrient: Mg", "macronutrient: P", "analogue: Rb", "analogue: Sr","micronutrient: B" , "micronutrient: Co", "micronutrient: Cu", "micronutrient: Fe", "micronutrient: Mn", "micronutrient: Mo", "micronutrient: Se" , "micronutrient: Zn", "harmful: Al" , "harmful: As", "harmful: Cd", "harmful: Na"))
+
+p2 = ggplot(h2,aes(SITE,h2)) +
+  geom_col(aes(fill = SITE)) +
+  geom_errorbar(aes(ymin=h2-h2_SE, ymax=h2+h2_SE), width = 0) +
+  geom_linerange(aes(ymin = h2, ymax = h2 + h2_SE)) +
+  geom_linerange(aes(ymin = h2 - h2_SE, ymax = h2)) +
+  facet_wrap(~Named_Trait, nrow = 6) +
+  theme_bw() + 
+  theme_Li +
+  xlab("Common Gardens") + 
+  ylab(bquote('h'^2)) +
+  ylim(c(-0.02, 1)) + 
+  theme(legend.position="none",
+        panel.spacing.x = unit(0.15, 'cm')) +
+  scale_x_discrete(expand = c(0.03, 0.03))
+p2
+```
+
+
+```{r full figure}
+F1 = plot_grid(p1, p2, labels = c('(a)','(b)'), ncol = 2, rel_widths = c(0.55, 0.45))
+save_plot(file='../1-PhenotypicAnalysis&GenstatFormatting/Fig1_PhenotypicVariation&heritability.png',
+          F1, base_height = 5, base_width = 7.5)
+
+```
+
