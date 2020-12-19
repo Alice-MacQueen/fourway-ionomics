@@ -88,3 +88,124 @@ sorghum cultivation is concentrated, under such conditions,
 genotype × environment (G × E) interaction for agronomic
 and grain nutrient traits expect to be large and may not permit
 differentiation of performance of genotypes across environments.
+
+
+# Yang et al 2009
+
+Switchgrass ionomics paper - 20 elements in 31 switchgrass accessions. Midseason and late season harvest in one year at one location. (looking at remobilization efficiency).
+
+The concentration of
+several elements (N, P, K, and Rb) decreased in the shoots
+of all accessions during senescence, although the efficiency of remobilization ranged from 20% to 61% for N, 31% to
+65% for P, 25% for 84% for K, and 33% to 84% for Rb.
+
+
+Finally,
+differences in elemental composition between upland and
+lowland ecotypes were also found. 
+
+## This paper has good ionomics justifications for biofuels.
+
+Although switchgrass remobilizes some nutrients from
+shoots to roots each year during senescence, substantial
+amounts of nutritive elements are removed with harvested
+biomass. For example, the total N removed with biomass in
+a one-cut fall harvest system varied from 31 to 63 kg N
+−1 −1 −1 −1ha year , and from 90 to 144 kg ha year for a two-
+cut system, over 5 years of measurements [26]. Such
+nutrient withdrawal rates inevitably result in N depletion
+from the soil and necessitate the addition of fertilizer N to
+maintain switchgrass productivity. Synthesis and applica-
+tion of fertilizer N is energy intensive and economically and
+environmentally costly. High N content in harvested
+biomass can be an additional liability because it yields
+NOx compounds upon oxidation, which are potent atmo-
+spheric pollutants [15]. High concentrations of other
+macronutrients such as P, K, and S in harvested biomass
+can lead to significant depletion of these in the soil,
+necessitating fertilizer amendments to maintain soil fertility.
+Finally, the presence of certain elements in biomass,
+especially alkali metals, can negatively affect biomass
+digestion, fermentation, or combustion [21]. This will also
+increase the cost of bioenergy production.
+
+21. Miles TR, Miles TR, Baxter LL, Bryers RW, Jenkins BM, Oden
+LL (1996) Boiler deposits from firing biomass fuels. Biomass
+Bioenergy 10:125–138
+
+Nutrient management is a key component of sustainable
+agriculture. Nutrient uptake from the soil is not only
+primarily a function of plant biomass but it is also
+influenced by plant genotype and environment interactions,
+especially soil properties, weather, and management prac-
+tices [27]. One reason that switchgrass was selected as a
+promising species for biofuel production is that it can be
+grown on marginal soils, which would minimize competi-
+tion with food crops for prime arable land [6, 25].
+Nonetheless, sustainable management of soil nutrients and
+fertilizers will be important if switchgrass is to become part
+of a long-term solution to the looming energy crisis.
+Nutrients are always removed from the soil when biomass
+is harvested and taken away from the site of production.
+However, the amount of each element removed depends on
+the plant species, genotype, time of harvest, and other
+factors. Time of harvest is particularly important for
+perennial plants, such as switchgrass, which remobilize
+some nutrients during shoot senescence and store them in
+the root for subsequent re-use during shoot growth in the
+next season [15, 25]. Diversity exists within and among
+natural populations of plants both in the timing of
+
+27. Robinson DL (1996) Fertilization and nutrient utilization in
+harvested forage systems: Southern forage crops. In Joost R.E.
+and Roberts C.A. (eds). Nutrient cycling in forage systems.
+Proc. Symp. Columbia, MO. Potash and phosphate Inst.
+Manhattan, KS, pp 65–92
+
+
+Despite the fact that lowland ecotypes were, on average,
+more efficient in their use of N and P to produce biomass
+
+While the use of natural variation in classical
+breeding programs is one sure way to reduce nutrient losses
+with harvested biomass, biotechnology and precise gene
+transfer are alternative approaches that may extend what is
+possible using natural variation alone [8, 19].
+
+At least two systems for switchgrass harvesting have
+been tested: one-cut in late fall/early winter and two-cut in
+both mid-summer and late fall. Although the one- and two-
+cut systems often produce similar yields [17], the two-cut
+system was shown to remove more nutrients from soil than
+the one-cut system [14–16]. Consistent with such results,
+the concentration of N, P, and K in mature tillers harvested
+in August were higher than those of senescence tillers
+harvested in December for all 31 accessions in our study
+Bioenerg. Res. (2009) 2:257–266
+ 265
+(Tables 1 and 2). Thus, a single harvest in late fall/early
+winter would conserve more soil nutrientsv for subsequent
+biomass production.
+
+ We found significant
+differences between the two ecotypes classes in Ca and
+Mg contents at the maturity stage, in N and P contents at
+the senescent stage, and K and Na at both developmental
+stages (Table 4).  These results indicated that there are
+elemental differences between upland and lowland ecotypes
+grown in the field. In view of the fact that K and Na
+homeostasis are closely related to plant salt tolerance [28,
+32], it will be interesting to test if the higher levels of K and
+Na in lowland ecotypes make them more or less susceptible
+to salt stress. Except for a mention that lowland Alamo has
+moderate tolerance to salinity [2], no other information
+about salt tolerance of switchgrass ecotypes is available in
+the literature, to our knowledge. Given the likelihood that
+switchgrass will be planted on marginal soils, including
+saline soils, this is an area of research well worth pursuing.
+
+
+# 
+
+We do genetic mapping of the ionome in switchgrass. To our knowledge, this is the first genetic study of the ionome in switchgrass. Ionomic differences were known to exist between upland and lowland ecotypes, and we map this divergence here.
+We also map the ionome of switchgrass in three environments within its native range, separated by 14 degrees of latitude.
