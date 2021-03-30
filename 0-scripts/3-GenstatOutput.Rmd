@@ -1,0 +1,289 @@
+---
+title: "3-GenstatOutput.Rmd"
+author: "Alice MacQueen"
+date: "3/23/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+### Formatting Genstat Results##
+library(tidyverse)
+library(reshape2)
+library(xlsx)
+library(ape)
+library(ComplexUpset)
+library(cowplot)
+library(scales)
+workingdir <- file.path("../2-GenstatRunning/")
+```
+
+#
+
+```{r}
+
+###1.formatting EFF files, get the QTL effects
+QTLEffectFiles = intersect(list.files(path = workingdir, pattern='EFF'),
+                         list.files(path = workingdir,pattern='xlsx'))
+qtlEff = lapply(QTLEffectFiles, function(x){
+  tmp = read.xlsx(file.path(workingdir, x), sheetIndex = 1)
+  tmp2 = tmp %>% gather('ENVI','VALUE',-POS) %>% separate(ENVI, c('TYPE','CROSS','SITE')) %>% dplyr::rename(INDEX=POS)%>%
+    spread(TYPE,VALUE) %>% mutate(TRAIT = strsplit(strsplit(x,"_",fixed=T)[[1]][2],".", fixed= T)[[1]][1] )
+})
+qtlEff = do.call(rbind, qtlEff)
+
+qtlEff = qtlEff %>% mutate(SITE=str_replace(SITE,'PKLE','TX'))%>% 
+  mutate(SITE=str_replace(SITE,'CLMB','MO'))%>% 
+  mutate(SITE=str_replace(SITE,'KBSM','MI'))%>%
+  mutate(TRAIT=str_replace(TRAIT,'[0-9]+',""))
+
+write.csv(qtlEff,'../3-GenstatOutput/QTLEffect.csv', row.names = F)
+```
+
+```{r}
+###2. pairwised t test for the significance of 
+####differential sensitivity (DS) and atagonistic pleiotropy (AP)
+eff2 = qtlEff %>% filter(complete.cases(.))
+
+Eff_Sig = NULL
+for (phe in unique(eff2$TRAIT)){
+  tmp1 = eff2 %>% filter(TRAIT==phe)
+  for (i in unique(tmp1$INDEX)){
+    tmp2 = tmp1 %>% filter(INDEX==i)
+    for (cross in unique(tmp2$CROSS)){
+      tmp3 = tmp2 %>% filter(CROSS==cross)
+      
+      Z_mo_mi = (tmp3$EFF[1]-tmp3$EFF[2])/(sqrt(tmp3$SE[1]^2 + tmp3$SE[2]^2))
+      P_mo_mi = (1-pnorm(abs(Z_mo_mi)))*2
+      
+      Z_mo_tx = (tmp3$EFF[1]-tmp3$EFF[3])/(sqrt(tmp3$SE[1]^2 + tmp3$SE[3]^2))
+      P_mo_tx = (1-pnorm(abs(Z_mo_tx)))*2
+      
+      Z_mi_tx = (tmp3$EFF[2]-tmp3$EFF[3])/(sqrt(tmp3$SE[2]^2 + tmp3$SE[3]^2))
+      P_mi_tx = (1-pnorm(abs(Z_mi_tx)))*2
+      
+      Pvalue = data.frame(Pvalue =c(P_mo_mi,P_mo_tx,P_mi_tx))
+      tmp3 = cbind(tmp3, Pvalue)
+      
+      if (tmp3$Pvalue[1] < 0.05 |tmp3$Pvalue[2]<0.05 |tmp3$Pvalue[3] <0.05 )
+      {Sig = data.frame(Sig = c('Yes','Yes','Yes'))}else{Sig = data.frame(Sig = c('No','No','No'))}
+      tmp3 = cbind(tmp3, Sig)
+      
+      if (tmp3$EFF[1] == tmp3$EFF[2] ){GxE = data.frame(GxE = c('NO','NO','NO'))
+      } else if(tmp3$EFF[1] >0 & tmp3$EFF[2] >0 & tmp3$EFF[3] >0 & tmp3$EFF[1]!= tmp3$EFF[2]){
+        GxE = data.frame(GxE = c('DS','DS','DS'))
+      } else if(tmp3$EFF[1] <0 & tmp3$EFF[2] <0 & tmp3$EFF[3] <0 & tmp3$EFF[1]!= tmp3$EFF[2] ){
+        GxE = data.frame(GxE = c('DS','DS','DS'))
+      } else {GxE = data.frame(GxE = c('AP','AP','AP'))}
+      
+      tmp3 = cbind(tmp3, GxE)
+      Eff_Sig = rbind(Eff_Sig,tmp3)
+    }
+  }
+}
+
+write.csv(Eff_Sig,'Significance_AP_DS.csv', row.names = F)
+
+###3.formating LOD files
+genomap = read.delim(file.path(workingdir, '4way_male_reduced_marker.map')
+                     , sep = '', header = F)
+genomap = genomap %>% filter(!str_detect(V1,'group')) %>% dplyr::rename(MARKER=V1, POS = V2) %>% 
+  mutate_at(vars(POS, MARKER),list(as.character)) %>% mutate_at(vars(POS),list(as.numeric))
+
+qtlLod = lapply(intersect(list.files(path = workingdir, pattern = "LOD"), list.files(path = workingdir, pattern='.xlsx')), function(x){
+  tmp = read.xlsx(file.path(workingdir, x), sheetIndex = 1)
+  tmp2 = tmp %>% mutate(MARKER = genomap$MARKER, POS=genomap$POS, TRAIT = strsplit(strsplit(x,"_",fixed=T)[[1]][2],".", fixed= T)[[1]][1] ) %>%
+    dplyr::rename(LOD= qtl_minlogp_) %>% dplyr::select(MARKER, POS, LOD, TRAIT) %>% rownames_to_column('INDEX') %>% mutate_at(vars(INDEX),list(as.numeric))
+})
+qtlLod = do.call(rbind, qtlLod)
+qtlLod = qtlLod %>% mutate(TRAIT=str_replace(TRAIT,'[0-9]+',""))
+
+QTLlist = qtlEff %>% left_join(qtlLod) %>% dplyr::select(INDEX,TRAIT, MARKER,POS, LOD) %>% unique() %>% 
+  mutate_at(vars(POS, MARKER),list(as.character))  %>% rowwise() %>% mutate(CHR = substr(MARKER, 5,6))%>%
+  mutate_at(vars(POS),list(as.numeric)) %>% mutate(QTL = paste0(CHR,'@', round(POS,2))) 
+
+###4. add the flank marker for these QTLs
+QTL_flank = NULL
+for (phe in unique(QTLlist$TRAIT)){
+  tmp1 = QTLlist %>% filter(TRAIT==phe) 
+  tmp2 = qtlLod %>% filter(TRAIT==phe) 
+  
+  for (i in 1:nrow(tmp1)){
+    tmp3 = tmp2 %>% filter(MARKER== as.character(tmp1[i,'MARKER']))
+    threshold = tmp3$LOD - 1.5
+    m = tmp1$INDEX[i] -1 ##one marker lower than the marker with the highest LOD
+    n = tmp1$INDEX[i] +1 ##one marker higher than the marker with the highest LOD
+    
+    while(tmp2$LOD[m] > threshold) {m=m-1}
+    tmp1$lowposition[i] = tmp2$POS[m]
+    tmp1$down_marker[i] = tmp2$MARKER[m]
+    
+    while(tmp2$LOD[n] > threshold){n=n+1}
+    tmp1$highposition[i] = tmp2$POS[n]
+    tmp1$up_marker[i] = tmp2$MARKER[n]
+    
+    if (tmp1$lowposition[i]> tmp1$POS[i]){
+      tmp1$lowposition[i] = tmp2$POS[m+1]
+      tmp1$down_marker[i] = tmp2$MARKER[m+1]
+    }
+    
+    if (tmp1$highposition[i]==0){
+      tmp1$highposition[i] = tmp2$POS[n-1]
+      tmp1$up_marker[i] = tmp2$MARKER[n-1]
+    }
+    
+    tmp4 = tmp2 %>% filter(str_detect(MARKER, tmp1$CHR[i]))
+    if (tmp1$highposition[i]< tmp1$lowposition[i] & tmp1$POS[i] > 30){
+      tmp1$highposition[i] = tmp4$POS[nrow(tmp4)]
+      tmp1$up_marker[i] = tmp4$MARKER[nrow(tmp4)]
+    }
+   
+    if (tmp1$highposition[i]< tmp1$lowposition[i] & tmp1$POS[i] < 30){
+      tmp1$lowposition[i] = tmp4$POS[1]
+      tmp1$down_marker[i] = tmp4$MARKER[1]
+    }
+  }
+  
+  QTL_flank = rbind(QTL_flank,tmp1)
+}
+
+###5. check if there is g x e, using qtlEFF file
+for (i in 1:nrow(QTLlist)){
+  tmp = qtlEff %>% filter(INDEX==QTLlist$INDEX[i] & TRAIT==QTLlist$TRAIT[i] & CROSS=='add')
+  if (tmp$EFF[1] != tmp$EFF[2]){QTL_flank$QxE[i] = 'Yes'}
+  if (tmp$EFF[1] == tmp$EFF[2]){QTL_flank$QxE[i] = 'No'}
+}
+
+QTL_flank = QTL_flank %>% mutate(ChrNo = str_extract(CHR, '[1-9]'), ChrAnnot = str_extract(CHR, '[A-Z]')) %>%
+  mutate_at(vars('ChrNo'), list(as.numeric)) %>%  mutate(Dist = case_when(
+    str_detect(ChrAnnot,'K') ~ (ChrNo*2-1),
+    str_detect(ChrAnnot,'N') ~ ChrNo*2
+  ))
+write.csv(QTL_flank,'../3-GenstatOutput/QTLlistForAllTraits_flankmarker.csv',row.names = F)
+
+
+```
+## QTL Summary Plot Fig 2a
+
+```{r}
+###6. plot summary of QTLs and Upset Plot for QTL colocalization
+load('../0-data/sexAveraged.cross.rda')
+QTL_flank$TRAIT = factor(QTL_flank$TRAIT, levels = c("K", "Ca", "Mg", "P", 
+                                                     "Mn", "Fe", "Zn", "Cu", "Mo", 
+                                                     "Sr", "Rb", 
+                                                     "Na", "Al", "Cd"))
+cols  =  viridis_pal(option = "D")(30)[c(1,1,1,1, 12,12,12,12,12, 22,22, 30,30,30)]   # 4, 5, 2, 3 w/ QTL per category
+cols  =  viridis_pal(option = "D")(14)   # 4, 5, 2, 3 w/ QTL per category
+library(qtlTools)
+
+svg('../3-GenstatOutput/Fig2_1_QTL_summary_color_categories.svg', width = 10)
+with(QTL_flank, segmentsOnMap(cross, phe = TRAIT, chr = CHR, 
+                              l = lowposition, h = highposition,
+                              peaklod = LOD, peakcM = POS,  
+                              showPeaks = TRUE,
+                              chrBuffer = c(0.15,0.1), 
+                              tick.width = 0.05, lwd = "byLod",
+                              col = cols,
+                              #leg.inset = -0.026, legendCex = 0.7, 
+                              legendPosition = "right"))
+
+for (phe in unique(QTL_flank$TRAIT)){
+  tmp = subset(QTL_flank, TRAIT == phe)
+  for (i in 1:nrow(tmp)){
+    if (tmp$QxE[i]=='Yes')
+      text(x = (tmp$Dist[i] + 0.4), y = (tmp$lowposition[i] - 2), '*', 
+           col = 'red', cex = 1.5)
+  }
+}
+dev.off()
+
+levels(QTL_flank$TRAIT)
+```
+
+ggplot version of Figure 2a?
+
+Colors: macronutrients, micronutrients, analougues, others
+
+```{r}
+
+show_col(viridis_pal()(30))
+
+show_col(viridis_pal(option = "B", end = 0.9)(4))
+
+```
+
+## Supplement QTL plots within each category
+
+```{r}
+QTL_flank$TRAIT = factor(QTL_flank$TRAIT, levels = c("K", "Ca", "Mg", "P", 
+                                                     "Mn", "Fe", "Zn", "Cu", "Mo", 
+                                                     "Sr", "Rb", 
+                                                     "Na", "Al", "Cd"))
+
+
+QTL_macro <- QTL_flank[which(QTL_flank$TRAIT %in% c("K", "Ca", "Mg", "P")),]
+col_macro <- viridis_pal(option = "B", end = 0.9)(4)
+svg('../3-GenstatOutput/Supp_Fig_QTL_summary_macronutrients.svg', width = 8)
+with(QTL_macro, segmentsOnMap(cross, phe = TRAIT, chr = CHR, 
+                              l = lowposition, h = highposition,
+                              peaklod = LOD, peakcM = POS,  
+                              showPeaks = TRUE,
+                              chrBuffer = c(0.15,0.1), 
+                              tick.width = 0.05, lwd = "byLod",
+                              col = col_macro,
+                              leg.inset = 0.066, legendCex = 0.7, 
+                              legendPosition = "right"))
+dev.off()
+
+
+
+QTL_micro <- QTL_flank[which(QTL_flank$TRAIT %in% c("Mn", "Fe", "Zn", "Cu",
+                                                    "Mo")),]
+QTL_micro <- droplevels(QTL_micro)
+col_micro <- viridis_pal(option = "B", end = 0.9)(5)
+svg('../3-GenstatOutput/Supp_Fig_QTL_summary_micronutrients.svg', width = 8)
+with(QTL_micro, segmentsOnMap(cross, phe = TRAIT, chr = CHR, 
+                              l = lowposition, h = highposition,
+                              peaklod = LOD, peakcM = POS,  
+                              showPeaks = TRUE,
+                              chrBuffer = c(0.15, 0.1), 
+                              tick.width = 0.05, lwd = "byLod",
+                              col = col_micro,
+                              leg.inset = 0.066, legendCex = 0.7, 
+                              legendPosition = "right"))
+dev.off()
+
+
+
+QTL_analogue <- QTL_flank[which(QTL_flank$TRAIT %in% c("Sr", "Rb")),]
+QTL_analogue <- droplevels(QTL_analogue)
+col_analogue <- viridis_pal(option = "B", begin = 0.25, end = 0.76)(2)
+svg('../3-GenstatOutput/Supp_Fig_QTL_summary_analogues.svg', width = 8)
+with(QTL_analogue, segmentsOnMap(cross, phe = TRAIT, chr = CHR, 
+                              l = lowposition, h = highposition,
+                              peaklod = LOD, peakcM = POS,  
+                              showPeaks = TRUE,
+                              chrBuffer = c(0.15, 0.1), 
+                              tick.width = 0.05, lwd = "byLod",
+                              col = col_analogue,
+                              leg.inset = 0.066, legendCex = 0.7, 
+                              legendPosition = "right"))
+dev.off()
+
+QTL_other <- QTL_flank[which(QTL_flank$TRAIT %in% c("Na", "Al", "Cd")),]
+QTL_other <- droplevels(QTL_other)
+col_other <- viridis_pal(option = "B", begin = 0.1, end = 0.86)(3)
+svg('../3-GenstatOutput/Supp_Fig_QTL_summary_other.svg', width = 8)
+with(QTL_other, segmentsOnMap(cross, phe = TRAIT, chr = CHR, 
+                              l = lowposition, h = highposition,
+                              peaklod = LOD, peakcM = POS,  
+                              showPeaks = TRUE,
+                              chrBuffer = c(0.15, 0.1), 
+                              tick.width = 0.05, lwd = "byLod",
+                              col = col_other,
+                              leg.inset = 0.066, legendCex = 0.7, 
+                              legendPosition = "right"))
+dev.off()
+
+```
+
